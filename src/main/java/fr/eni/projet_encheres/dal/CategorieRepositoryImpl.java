@@ -4,10 +4,12 @@ import fr.eni.projet_encheres.bo.Categorie;
 import fr.eni.projet_encheres.dal.RowMappers.CategorieRowMapper;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
+@Repository
 public class CategorieRepositoryImpl implements CategorieRepository{
 
     private JdbcTemplate jdbcTemplate;

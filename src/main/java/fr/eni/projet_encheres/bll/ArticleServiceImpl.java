@@ -6,7 +6,9 @@ import java.util.Optional;
 import fr.eni.projet_encheres.bo.Article;
 import fr.eni.projet_encheres.dal.ArticleRepository;
 import fr.eni.projet_encheres.exceptions.ArticleNotFound;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ArticleServiceImpl implements ArticleService {
 
     private ArticleRepository ArticleRepository;
