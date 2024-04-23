@@ -18,19 +18,16 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
     @Override
     public List<Enchere> findAllEncheres() {
-        String sql = " SELECT e.no_enchere, e.date_enchere, e.montant_enchere, a.no_article, u.no_utilisateur "
-                + " from encheres e "
-                + " inner join articles a on a.no_article = e.no_article "
-                + " inner join utilisateurs u on u.no_utilisateur = e.no_utilisateur";
+        String sql = " SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur from encheres";
 
         return jdbcTemplate.query(sql, new EnchereRowMapper());
     }
 
     @Override
     public Enchere findById(int _id) {
-        String sql = "SELECT noenchere, dateenchere, montant_enchere, noarticle, noutilisateur FROM encheres WHERE encheres.noenchere = ?";
+        String sql = "SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur FROM encheres WHERE no_enchere = ?";
 
-        Enchere encheres = jdbcTemplate.queryForObject(sql, new EnchereRowMapper(), _id);
-        return encheres;
+        Enchere enchere = jdbcTemplate.queryForObject(sql, new EnchereRowMapper(), _id);
+        return enchere;
     }
 }

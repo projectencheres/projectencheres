@@ -12,11 +12,11 @@ public class EnchereRowMapper implements RowMapper<Enchere> {
     public Enchere mapRow(ResultSet rs, int rowNum) throws SQLException {
         Enchere enchere = new Enchere();
 
-        enchere.setNoEnchere(rs.getInt("noenchere"));
-        enchere.setDateEnchere(rs.getDate("dateenchere"));
+        enchere.setNoEnchere(rs.getInt("no_enchere"));
+        enchere.setDateEnchere(rs.getDate("date_enchere"));
         enchere.setMontantEnchere(rs.getDouble("montant_enchere"));
-        enchere.setNoArticle(rs.getInt("noarticle"));
-        enchere.setNoUtilisateur(rs.getInt("noutilisateur"));
+        enchere.setNoArticle(rs.getInt("no_article"));
+        enchere.setNoUtilisateur(rs.getInt("no_utilisateur"));
 
         return enchere;
 
