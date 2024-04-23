@@ -7,6 +7,5 @@ import java.util.List;
 public interface EnchereRepository {
 
     List<Enchere> findAllEncheres();
-
     Enchere findById(int _id);
 }
