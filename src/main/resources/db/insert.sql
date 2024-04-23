@@ -15,7 +15,7 @@ INSERT INTO Retrait (rue, code_postal, ville) VALUES
 ('321 Pine St', '75004', 'Toulouse');
 
 -- Insertion de données pour la table ArticleVendu après avoir les catégories et les lieux de retrait
-INSERT INTO ArticleVendu (nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, categorieArticle, lieuRetrait) VALUES
+INSERT INTO Article (nomArticle, description, dateDebutEncheres, dateFinEncheres, miseAPrix, categorieArticle, lieuRetrait) VALUES
 ('iPhone 12', 'Smartphone dernière génération', '2024-04-10', '2024-04-20', 300.00, 1, 1),
 ('Chaise Scandinave', 'Chaise en bois style nordique', '2024-04-12', '2024-04-22', 50.00, 2, 2),
 ('Les Misérables', 'Livre classique par Victor Hugo', '2024-04-15', '2024-04-25', 10.00, 3, NULL);
