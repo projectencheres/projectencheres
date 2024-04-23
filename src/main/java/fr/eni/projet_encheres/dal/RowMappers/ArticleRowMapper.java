@@ -12,16 +12,16 @@ public class ArticleRowMapper implements RowMapper<Article> {
     public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
         Article article = new Article();
 
-        article.setNoArticle(rs.getInt("noArticle"));
-        article.setNomArticle(rs.getString("nomArticle"));
+        article.setNoArticle(rs.getInt("no_article"));
+        article.setNomArticle(rs.getString("nom_article"));
         article.setDescription(rs.getString("description"));
-        article.setDateDebutEncheres(rs.getDate("dateDebutEncheres"));
-        article.setDateFinEncheres(rs.getDate("dateFinEncheres"));
-        article.setMiseAPrix(rs.getDouble("miseAPrix"));
-        article.setPrixVente(rs.getDouble("prixVente"));
-        article.setEtatVente(rs.getString("etatVente"));
-        article.setCategorieArticle(rs.getInt("categorieArticle"));
-        article.setLieuRetrait(rs.getInt("lieuRetrait"));
+        article.setDateDebutEncheres(rs.getDate("date_debut_encheres"));
+        article.setDateFinEncheres(rs.getDate("date_fin_encheres"));
+        article.setMiseAPrix(rs.getDouble("mise_a_prix"));
+        article.setPrixVente(rs.getDouble("prix_vente"));
+        article.setEtatVente(rs.getString("etat_vente"));
+        article.setCategorieArticle(rs.getInt("categorie_article"));
+        article.setLieuRetrait(rs.getInt("lieu_retrait"));
 
         return article;
     }

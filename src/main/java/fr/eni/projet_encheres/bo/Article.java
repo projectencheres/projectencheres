@@ -13,8 +13,25 @@ public class Article {
     private String etatVente;
     private int categorieArticle;
     private int lieuRetrait;
+	
     
-    // Getters and Setters
+    public Article() {
+	}
+	public Article(int noArticle, String nomArticle, String description, Date dateDebutEncheres, Date dateFinEncheres,
+			Double miseAPrix, Double prixVente, String etatVente, int categorieArticle, int lieuRetrait) {
+				super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.description = description;
+		this.dateDebutEncheres = dateDebutEncheres;
+		this.dateFinEncheres = dateFinEncheres;
+		this.miseAPrix = miseAPrix;
+		this.prixVente = prixVente;
+		this.etatVente = etatVente;
+		this.categorieArticle = categorieArticle;
+		this.lieuRetrait = lieuRetrait;
+	}
+	// Getters and Setters
 	public int getNoArticle() {
 		return noArticle;
 	}
@@ -74,6 +91,13 @@ public class Article {
 	}
 	public void setLieuRetrait(int lieuRetrait) {
 		this.lieuRetrait = lieuRetrait;
+	}
+	@Override
+	public String toString() {
+		return "Article [noArticle=" + noArticle + ", nomArticle=" + nomArticle + ", description=" + description
+				+ ", dateDebutEncheres=" + dateDebutEncheres + ", dateFinEncheres=" + dateFinEncheres + ", miseAPrix="
+				+ miseAPrix + ", prixVente=" + prixVente + ", etatVente=" + etatVente + ", categorieArticle="
+				+ categorieArticle + ", lieuRetrait=" + lieuRetrait + "]";
 	}
     
 }
