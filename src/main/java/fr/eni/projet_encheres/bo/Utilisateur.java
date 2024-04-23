@@ -13,7 +13,7 @@ public class Utilisateur {
     private String codePostal;
     private String ville;
     private String motDePasse;
-    private BigDecimal credit;
+    private Double credit;
     private Boolean administrateur;
     
     // getters & setters
@@ -78,10 +78,10 @@ public class Utilisateur {
 	public void setMotDePasse(String motDePasse) {
 		this.motDePasse = motDePasse;
 	}
-	public BigDecimal getCredit() {
+	public Double getCredit() {
 		return credit;
 	}
-	public void setCredit(BigDecimal credit) {
+	public void setCredit(Double credit) {
 		this.credit = credit;
 	}
 	public Boolean getAdministrateur() {
