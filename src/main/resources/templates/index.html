@@ -9,6 +9,7 @@
     <div th:each="enchere : ${encheres}">
         <a th:href="@{/encheres/(noEnchere=${enchere.noEnchere})}">
             <p th:text="${enchere.dateEnchere} + ' ' + ${enchere.montantEnchere} + ' ' + ${enchere.noArticle}"></p>
+            <p th:text="${enchere.noArticle} + ' ' + ${enchere.noUtilisateur}"></p>
         </a>
     </div>
 
