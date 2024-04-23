@@ -18,10 +18,10 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
     @Override
     public List<Enchere> findAllEncheres() {
-        String sql = " SELECT e.noenchere, e.dateenchere, e.montant_enchere, a.noarticle, u.noutilisateur "
-                + " from enchere e "
-                + " inner join article a on a.noarticle = e.noarticle "
-                + " inner join utilisateur u on u.noutilisateur = e.noutilisateur";
+        String sql = " SELECT e.no_enchere, e.date_enchere, e.montant_enchere, a.no_article, u.no_utilisateur "
+                + " from encheres e "
+                + " inner join articles a on a.no_article = e.no_article "
+                + " inner join utilisateurs u on u.no_utilisateur = e.no_utilisateur";
 
         return jdbcTemplate.query(sql, new EnchereRowMapper());
     }
