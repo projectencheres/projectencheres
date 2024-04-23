@@ -1,16 +1,16 @@
 package fr.eni.projet_encheres.bo;
 
 public class Retrait {
-    private Long noRetrait;
+    private int noRetrait;
     private String rue;
     private String codePostal;
     private String ville;
 
     // Getters and Setters
-	public Long getNoRetrait() {
+	public int getNoRetrait() {
 		return noRetrait;
 	}
-	public void setNoRetrait(Long noRetrait) {
+	public void setNoRetrait(int noRetrait) {
 		this.noRetrait = noRetrait;
 	}
 	public String getRue() {

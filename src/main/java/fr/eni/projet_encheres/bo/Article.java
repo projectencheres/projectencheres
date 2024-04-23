@@ -1,25 +1,24 @@
 package fr.eni.projet_encheres.bo;
 
 import java.util.Date;
-import java.math.BigDecimal;
 
 public class Article {
-    private Long noArticle;
+    private int noArticle;
     private String nomArticle;
     private String description;
     private Date dateDebutEncheres;
     private Date dateFinEncheres;
-    private BigDecimal miseAPrix;
-    private BigDecimal prixVente;
+    private Double miseAPrix;
+    private Double prixVente;
     private String etatVente;
-    private Long categorieArticle;
-    private Long lieuRetrait;
+    private int categorieArticle;
+    private int lieuRetrait;
     
     // Getters and Setters
-	public Long getNoArticle() {
+	public int getNoArticle() {
 		return noArticle;
 	}
-	public void setNoArticle(Long noArticle) {
+	public void setNoArticle(int noArticle) {
 		this.noArticle = noArticle;
 	}
 	public String getNomArticle() {
@@ -46,16 +45,16 @@ public class Article {
 	public void setDateFinEncheres(Date dateFinEncheres) {
 		this.dateFinEncheres = dateFinEncheres;
 	}
-	public BigDecimal getMiseAPrix() {
+	public Double getMiseAPrix() {
 		return miseAPrix;
 	}
-	public void setMiseAPrix(BigDecimal miseAPrix) {
+	public void setMiseAPrix(Double miseAPrix) {
 		this.miseAPrix = miseAPrix;
 	}
-	public BigDecimal getPrixVente() {
+	public Double getPrixVente() {
 		return prixVente;
 	}
-	public void setPrixVente(BigDecimal prixVente) {
+	public void setPrixVente(Double prixVente) {
 		this.prixVente = prixVente;
 	}
 	public String getEtatVente() {
@@ -64,16 +63,16 @@ public class Article {
 	public void setEtatVente(String etatVente) {
 		this.etatVente = etatVente;
 	}
-	public Long getCategorieArticle() {
+	public int getCategorieArticle() {
 		return categorieArticle;
 	}
-	public void setCategorieArticle(Long categorieArticle) {
+	public void setCategorieArticle(int categorieArticle) {
 		this.categorieArticle = categorieArticle;
 	}
-	public Long getLieuRetrait() {
+	public int getLieuRetrait() {
 		return lieuRetrait;
 	}
-	public void setLieuRetrait(Long lieuRetrait) {
+	public void setLieuRetrait(int lieuRetrait) {
 		this.lieuRetrait = lieuRetrait;
 	}
     

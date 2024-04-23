@@ -1,14 +1,14 @@
 package fr.eni.projet_encheres.bo;
 
 public class Categorie {
-    private Long noCategorie;
+    private int noCategorie;
     private String libelle;
     
     // Getters and Setters
-	public Long getNoCategorie() {
+	public int getNoCategorie() {
 		return noCategorie;
 	}
-	public void setNoCategorie(Long noCategorie) {
+	public void setNoCategorie(int noCategorie) {
 		this.noCategorie = noCategorie;
 	}
 	public String getLibelle() {

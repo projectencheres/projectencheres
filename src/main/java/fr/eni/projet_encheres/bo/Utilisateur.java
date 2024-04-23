@@ -3,7 +3,7 @@ package fr.eni.projet_encheres.bo;
 import java.math.BigDecimal;
 
 public class Utilisateur {
-    private Long noUtilisateur;
+    private int noUtilisateur;
     private String pseudo;
     private String nom;
     private String prenom;
@@ -18,10 +18,10 @@ public class Utilisateur {
     
     // getters & setters
     
-	public Long getNoUtilisateur() {
+	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
-	public void setNoUtilisateur(Long noUtilisateur) {
+	public void setNoUtilisateur(int noUtilisateur) {
 		this.noUtilisateur = noUtilisateur;
 	}
 	public String getPseudo() {

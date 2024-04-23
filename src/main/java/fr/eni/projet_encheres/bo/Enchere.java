@@ -1,21 +1,21 @@
 package fr.eni.projet_encheres.bo;
 
 import java.util.Date;
-import java.math.BigDecimal;
+
 
 public class Enchere {
-    private Long noEnchere;
+    private int noEnchere;
     private Date dateEnchere;
-    private BigDecimal montantEnchere;
-    private Long noArticle;
-    private Long noUtilisateur;
+    private Double montantEnchere;
+    private int noArticle;
+    private int noUtilisateur;
     
     // Getters and Setters
     
-	public Long getNoEnchere() {
+	public int getNoEnchere() {
 		return noEnchere;
 	}
-	public void setNoEnchere(Long noEnchere) {
+	public void setNoEnchere(int noEnchere) {
 		this.noEnchere = noEnchere;
 	}
 	public Date getDateEnchere() {
@@ -24,22 +24,22 @@ public class Enchere {
 	public void setDateEnchere(Date dateEnchere) {
 		this.dateEnchere = dateEnchere;
 	}
-	public BigDecimal getMontantEnchere() {
+	public Double getMontantEnchere() {
 		return montantEnchere;
 	}
-	public void setMontantEnchere(BigDecimal montantEnchere) {
+	public void setMontantEnchere(Double montantEnchere) {
 		this.montantEnchere = montantEnchere;
 	}
-	public Long getNoArticle() {
+	public int getNoArticle() {
 		return noArticle;
 	}
-	public void setNoArticle(Long noArticle) {
+	public void setNoArticle(int noArticle) {
 		this.noArticle = noArticle;
 	}
-	public Long getNoUtilisateur() {
+	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}
-	public void setNoUtilisateur(Long noUtilisateur) {
+	public void setNoUtilisateur(int noUtilisateur) {
 		this.noUtilisateur = noUtilisateur;
 	}
 
