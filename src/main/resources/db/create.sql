@@ -17,7 +17,7 @@ CREATE TABLE Utilisateur (
 );
 
 -- Table ArticleVendu
-CREATE TABLE ArticleVendu (
+CREATE TABLE Article (
     noArticle SERIAL PRIMARY KEY,
     nomArticle VARCHAR(255) NOT NULL,
     description TEXT,
@@ -51,10 +51,10 @@ CREATE TABLE Enchere (
     montant_enchere NUMERIC(10,2) NOT NULL,
     noArticle INT NOT NULL,
     noUtilisateur INT NOT NULL,
-    FOREIGN KEY (noArticle) REFERENCES ArticleVendu(noArticle),
+    FOREIGN KEY (noArticle) REFERENCES Article(noArticle),
     FOREIGN KEY (noUtilisateur) REFERENCES Utilisateur(noUtilisateur)
 );
 
 -- Relations entre les tables
-ALTER TABLE ArticleVendu ADD FOREIGN KEY (categorieArticle) REFERENCES Categorie(noCategorie);
-ALTER TABLE ArticleVendu ADD FOREIGN KEY (lieuRetrait) REFERENCES Retrait(noRetrait);
+ALTER TABLE Article ADD FOREIGN KEY (categorieArticle) REFERENCES Categorie(noCategorie);
+ALTER TABLE Article ADD FOREIGN KEY (lieuRetrait) REFERENCES Retrait(noRetrait);
