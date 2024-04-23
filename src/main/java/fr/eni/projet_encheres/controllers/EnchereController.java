@@ -17,7 +17,7 @@ public class EnchereController {
 
     @GetMapping("/encheres")
     public String homePageView(Model model) {
-        model.addAttribute("enchere", enchereService);
+        model.addAttribute("encheres", enchereService.findAllEncheres());
         return "index";
     }
 }
