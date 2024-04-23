@@ -2,10 +2,16 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List d'Encheres</title>
+    <title>Liste des Encheres</title>
 </head>
 <body>
-Hello world
+<div>
+    <div th:each="enchere : ${encheres}">
+        <a th:href="@{/encheres/(noEnchere=${enchere.noEnchere})}">
+            <p th:text="${enchere.dateEnchere} + ' ' + ${enchere.montantEnchere} + ' ' + ${enchere.noArticle}"></p>
+        </a>
+    </div>
 
+</div>
 </body>
 </html>
