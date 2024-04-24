@@ -8,19 +8,23 @@
 	</th:block>
 </head>
 <body>
-	<header>
-		<div id="container-header">
-			<h1>ENI-Encheres</h1>
+	<header th:fragment="header" class="flex justify-between items-center font-viet h-header bg-primary">
+		<div id="container-header" class="h-header">
+			<img src="/img/logo.png" alt="" width="150">
 		</div>
-		<nav >
-			<a href="/inscription">S'nscription</a>
-            <a href="/connection">Se connecter</a>
+		<nav class="flex gap-2 p-2" >
+			<a href="/inscription" class="btn">S'inscrire</a>
+            <a href="/connection" class="btn">Se connecter</a>
 		</nav>
 	</header>
 	
-	<div th:replace="${content}"></div>
+	<div class="flex justify-center h-full w-full font-viet">
+		<div  class="w-desk">
+			<div th:replace="${content}"></div>
+		</div>
+	</div>
 	
-	<footer th:fragment="pied-de-page">
+	<footer th:fragment="pied-de-page" class=" font-viet h-footer bg-primary">
 		<div>&copy; 2024 ENI - Encheres</div>
 		<div><a href="#">Mentions légales</a></div>
 		<div><a href="#">Crédits</a></div>
