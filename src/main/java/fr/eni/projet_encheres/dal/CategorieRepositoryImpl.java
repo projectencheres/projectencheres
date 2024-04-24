@@ -25,11 +25,11 @@ public class CategorieRepositoryImpl implements CategorieRepository{
     }
 
     @Override
-    public Optional<Categorie> findById(int id) {
+    public Optional<Categorie> findById(int no_categorie) {
         String sql = "SELECT * FROM categories WHERE no_categorie = ?";
         Optional<Categorie> optionalCategorie;
         try {
-            Categorie categorie = jdbcTemplate.queryForObject(sql, new CategorieRowMapper(), id);
+            Categorie categorie = jdbcTemplate.queryForObject(sql, new CategorieRowMapper(), no_categorie);
             assert categorie != null;
             optionalCategorie = Optional.of(categorie);
 

@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import fr.eni.projet_encheres.bo.Article;
 import fr.eni.projet_encheres.dal.ArticleRepository;
-import fr.eni.projet_encheres.exceptions.ArticleNotFound;
+import fr.eni.projet_encheres.exceptions.ArticleNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -23,12 +23,12 @@ public class ArticleServiceImpl implements ArticleService {
 	}
 
 	@Override
-	public Article findById(int noArticle)  throws ArticleNotFound{
+	public Article findById(int noArticle)  throws ArticleNotFoundException {
 		
 		Optional<Article> optArticle = ArticleRepository.findById(noArticle);
 		
 		if(optArticle.isEmpty()) {
-			throw new ArticleNotFound(noArticle);
+			throw new ArticleNotFoundException(noArticle);
 		}
 		
 		return optArticle.get();

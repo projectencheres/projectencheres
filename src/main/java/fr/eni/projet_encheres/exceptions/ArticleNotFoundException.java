@@ -1,9 +1,9 @@
 package fr.eni.projet_encheres.exceptions;
 
-public class ArticleNotFound extends Exception {
+public class ArticleNotFoundException extends Exception {
 	private int idArticle;
 	
-	public ArticleNotFound(int idArticle) {
+	public ArticleNotFoundException(int idArticle) {
 		this.idArticle = idArticle;
 	}
 	
