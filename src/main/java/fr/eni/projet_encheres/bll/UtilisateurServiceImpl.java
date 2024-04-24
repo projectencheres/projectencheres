@@ -3,22 +3,20 @@ package fr.eni.projet_encheres.bll;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import fr.eni.projet_encheres.bo.Article;
 import fr.eni.projet_encheres.bo.Utilisateur;
 import fr.eni.projet_encheres.dal.UtilisateurRepository;
-import fr.eni.projet_encheres.exceptions.ArticleNotFound;
 import fr.eni.projet_encheres.exceptions.UtilisateurNotFound;
 
 @Service
 public class UtilisateurServiceImpl implements UtilisateurService {
 
-    @Autowired
     private UtilisateurRepository utilisateurRepository;
 
-  
+    public UtilisateurServiceImpl(UtilisateurRepository utilisateurRepository) {
+        this.utilisateurRepository = utilisateurRepository;
+    }
 
     @Override
     public void deleteProfil(int idUtilisateur) {
@@ -37,16 +35,21 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     if (optUtilisateur.isEmpty()) {
     	throw new UtilisateurNotFound(noUtilisateur);
     }
-    
     	return optUtilisateur.get();
     }
 
 	@Override
 	public void updateProfil(Utilisateur utilisateur) {
 		utilisateurRepository.update(utilisateur);
-		
 	}
-	
-	
-    
+
+    @Override
+    public Optional<Utilisateur> findByPseudo(String pseudo) {
+        return utilisateurRepository.findByPseudo(pseudo);
+    }
+
+    @Override
+    public void save(Utilisateur utilisateur) {
+        utilisateurRepository.save(utilisateur);
+    }
 }

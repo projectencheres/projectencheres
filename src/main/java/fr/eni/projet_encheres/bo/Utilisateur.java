@@ -1,27 +1,38 @@
 package fr.eni.projet_encheres.bo;
 
-import java.math.BigDecimal;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import org.springframework.context.MessageSource;
 
 public class Utilisateur {
     private int noUtilisateur;
+
+	@NotEmpty(message = "Pseudo is required")
     private String pseudo;
     private String nom;
     private String prenom;
+
+	@Email(message = "Invalid email")
     private String email;
+
     private String telephone;
     private String rue;
+
     private String codePostal;
+
     private String ville;
+
+	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)$", message = "Password must contain alphanumeric characters")
     private String motDePasse;
     private Double credit;
+
+	@NotNull
     private Boolean administrateur;
 
-	
-    
     // getters & setters
 
-	
-    
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String codePostal, String ville, String motDePasse, Double credit, Boolean administrateur) {
 				super();
