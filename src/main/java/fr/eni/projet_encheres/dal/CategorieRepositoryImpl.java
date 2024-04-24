@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public class CategorieRepositoryImpl implements CategorieRepository{
 
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public CategorieRepositoryImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;

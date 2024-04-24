@@ -24,9 +24,9 @@ public class EnchereRepositoryImpl implements EnchereRepository {
     }
 
     @Override
-    public Enchere findById(int no_enchere) {
+    public Enchere findById(int noEnchere) {
         String sql = "SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur FROM encheres WHERE no_enchere = ?";
 
-        return jdbcTemplate.queryForObject(sql, new EnchereRowMapper(), no_enchere);
+        return jdbcTemplate.queryForObject(sql, new EnchereRowMapper(), noEnchere);
     }
 }
