@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{modele-page :: layout('Liste des enchères',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Liste des Encheres</title>
-    <link rel="stylesheet" href="output.css" >
+    <link rel="stylesheet" href="css/output.css" >
 </head>
 <body>
-<div>
+<div id="content-wrapper">
     <div th:each="enchere : ${encheres}">
         <a th:href="@{/encheres/(noEnchere=${enchere.noEnchere})}" class="font-bold text-red-700">
             <p th:text="${enchere.dateEnchere} + ' ' + ${enchere.montantEnchere} + ' ' + ${enchere.noArticle}"></p>
