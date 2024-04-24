@@ -9,7 +9,7 @@ public interface UtilisateurRepository {
 
     List<Utilisateur > findAll();
     Optional<Utilisateur> findById(int id);
-    void save(Utilisateur Utilisateur);
+    Utilisateur save(Utilisateur Utilisateur);
     void update(Utilisateur Utilisateur);
     void deleteById(int id);
 

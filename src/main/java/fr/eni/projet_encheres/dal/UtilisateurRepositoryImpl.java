@@ -40,10 +40,11 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     }
 
     @Override
-    public void save(Utilisateur utilisateur) {
+    public Utilisateur save(Utilisateur utilisateur) {
         String sql = "INSERT INTO utilisateurs (no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
         jdbcTemplate.update(sql, utilisateur.getNoUtilisateur(), utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(), 
         utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getMotDePasse(), utilisateur.getCredit(), utilisateur.getAdministrateur());
+		return utilisateur;
     }
 
     @Override
