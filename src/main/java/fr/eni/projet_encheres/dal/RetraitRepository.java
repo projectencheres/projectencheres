@@ -9,9 +9,8 @@ public interface RetraitRepository {
 
     List<Retrait> findAllRetraits();
 
-    Optional<Retrait> findById(int id);
+    Optional<Retrait> findById(int noRetrait);
 
     void save(Retrait retrait);
 
-    void deleteById(int id);
 }
