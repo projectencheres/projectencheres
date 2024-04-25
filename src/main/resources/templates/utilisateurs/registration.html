@@ -8,12 +8,6 @@
 <body>
 
     <div id="content-wrapper">
-
-        <!--create HTML registration form-->
-        <div class="bg-blue-100" th:if="${param.success}">
-            <p class="font-bold">You have successfully signed in</p>
-        </div>
-
         <h1>S'Inscrire</h1>
 
         <form th:action="@{/inscription}" method="post" th:object="${utilisateur}">
@@ -85,31 +79,34 @@
                     </div>
 
                     <div>
-                        <label for="mot de passe">Mot de Passe: </label>
+                        <label for="motDePasse">Mot de Passe: </label>
                         <div>
-                            <input type="password" name="mot de passe" id="mot de passe" th:field="*{motDePasse}" required>
+                            <input type="password" name="motDePasse" id="motDePasse" th:field="*{motDePasse}" required>
                         </div>
                         <span style="color: red" th:if="${#fields.hasErrors('motDePasse')}" th:errors="*{motDePasse}"></span>
                     </div>
 
                     <div>
-                        <label for="administrateur">Administrateur: </label>
+                        <label for="confirmation">Confirm Password: </label>
                         <div>
-                            <input type="checkbox" name="administrateur" id="administrateur" th:field="*{administrateur}" required>
+                            <input type="password" name="motDePasseConfirmation" id="confirmation" required>
                         </div>
-                        <span style="color: red" th:if="${#fields.hasErrors('administrateur')}" th:errors="*{administrateur}"></span>
+                    </div>
+                    <div th:if="${passwordMismatch}" class="error-message">The passwords do not match.</div>
+
+                    <div>
+                        <label for="credit">Credit: </label>
+                        <div>
+                            <input type="text" name="credit" id="credit" th:value="0.0" th:readonly="readonly">
+                        </div>
                     </div>
 
-<!--                    <div>-->
-<!--                        <label for="confirmation">Confirmation: </label>-->
-<!--                        <div>-->
-<!--                            <input type="password" name="confirmation" id="confirmation" th:field="*{motDePasse}" required>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                    <br>
                     <br>
 
                     <div>
                         <button type="submit">S'incrire</button>
+                        <br>
                         <br>
                         <span>Deja inscrit? <a th:href="@{/login}">Se Connecter</a></span>
                     </div>

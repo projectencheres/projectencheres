@@ -24,12 +24,10 @@ public class Utilisateur {
 
     private String ville;
 
-	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)$", message = "Password must contain alphanumeric characters")
+	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Password must contain alphanumeric characters")
     private String motDePasse;
     private Double credit;
-
-	@NotNull
-    private Boolean administrateur;
+    private boolean administrateur;
 
     // getters & setters
 
@@ -132,6 +130,4 @@ public class Utilisateur {
 				+ codePostal + ", ville=" + ville + ", motDePasse=" + motDePasse + ", credit=" + credit
 				+ ", administrateur=" + administrateur + "]";
 	}
-
-
 }
