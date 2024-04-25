@@ -30,6 +30,7 @@ public class RegistrationController {
             @Valid
             @ModelAttribute("utilisateur")  Utilisateur utilisateur,
             @RequestParam("motDePasseConfirmation") String motDePasseConfirmation,
+            @RequestParam String action,
             Model model,
             BindingResult result
     ) {
@@ -42,8 +43,15 @@ public class RegistrationController {
             return "utilisateurs/registration";
         }
 
-        utilisateur.setCredit(0.0);
+        if ("create".equals(action)) {
+            utilisateur.setCredit(0.0);
+            utilisateurService.save(utilisateur);
+            return "redirect:/encheres";
+        } else if("cancel".equals(action)) {
+            return "redirect:/encheres";
+        }
 
+        utilisateur.setCredit(0.0);
         utilisateurService.save(utilisateur);
         return "redirect:/encheres";
     }

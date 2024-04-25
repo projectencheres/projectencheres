@@ -16,14 +16,10 @@ public class Utilisateur {
 
 	@Email(message = "Invalid email")
     private String email;
-
     private String telephone;
     private String rue;
-
     private String codePostal;
-
     private String ville;
-
 	@Pattern(regexp = "^[a-zA-Z0-9]+$", message = "Password must contain alphanumeric characters")
     private String motDePasse;
     private Double credit;
