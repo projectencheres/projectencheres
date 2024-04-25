@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
 
-import java.util.Optional;
-
-
 @Controller
 @RequestMapping("/inscription")
 public class RegistrationController {

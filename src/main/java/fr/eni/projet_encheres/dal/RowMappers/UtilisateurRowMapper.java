@@ -5,12 +5,11 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import fr.eni.projet_encheres.bo.Enchere;
 import fr.eni.projet_encheres.bo.Utilisateur;
 
 public class UtilisateurRowMapper implements RowMapper<Utilisateur> {
     @Override
-    public Utilisateur mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Utilisateur mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException {
         Utilisateur utilisateur = new Utilisateur();
 
         utilisateur.setNoUtilisateur(rs.getInt("no_utilisateur"));

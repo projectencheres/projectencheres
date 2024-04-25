@@ -17,4 +17,22 @@ public class EnchereServiceImpl implements EnchereService{
 
     @Override
     public List<Enchere> findAllEncheres() { return enchereRepository.findAllEncheres();  }
+
+/*     @override
+    public List<Enchere> findByName() {
+        List<Enchere> list;
+        return list;
+    }
+
+    @override
+    public List<Enchere> findByCategorie() {
+        List<Enchere> list;
+        return list;
+    }
+
+    @Override
+    public List<Enchere> findByNameAndCategorie() {
+        List<Enchere> list;
+        return list;
+    } */
 }
