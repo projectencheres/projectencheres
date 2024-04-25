@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="css/output.css" >
 </head>
 <body>
+<<<<<<< HEAD
     <div id="content-wrapper" class="flex flex-col gap-8">
         <div class="flex flex-col gap-4 pt-4">
             <p class="text-h1 text-center">Liste des enchères</p>
@@ -33,6 +34,19 @@
                     <div class="w-28 h-full border">
                     </div>
                     <div>
+=======
+<div>
+    <div th:each="enchere : ${encheres}">
+        <a th:href="@{/encheres/(noEnchere=${enchere.noEnchere})}">
+            <p th:text="${enchere.dateEnchere} + ' ' + ${enchere.montantEnchere} + ' ' + ${enchere.noArticle}"></p>
+            <p th:text="${enchere.noArticle} + ' ' + ${enchere.noUtilisateur}"></p>
+            
+        </a>
+    </div>
+    <div>
+    	<a href="#"> gerer mon profil </a>
+    </div>
+>>>>>>> 1f2d0d4 (test commit)
 
                         <p class="underline text-h3 pb-2" th:text="${enchere.article.nomArticle}">Nom de l'Article</p>
                         <p class="text-h4">Prix: <span th:text="${enchere.montantEnchere}+ ' '+ points"></span></p>
