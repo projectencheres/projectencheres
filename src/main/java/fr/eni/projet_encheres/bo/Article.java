@@ -17,6 +17,16 @@ public class Article {
     
     public Article() {
 	}
+
+	public Article(int noArticle, String nomArticle, Date dateFinEncheres, Double prixVente, int categorieArticle) {
+		super();
+		this.noArticle = noArticle;
+		this.nomArticle = nomArticle;
+		this.dateFinEncheres = dateFinEncheres;
+		this.prixVente = prixVente;
+		this.categorieArticle = categorieArticle;
+	}
+
 	public Article(int noArticle, String nomArticle, String description, Date dateDebutEncheres, Date dateFinEncheres,
 			Double miseAPrix, Double prixVente, String etatVente, int categorieArticle, int lieuRetrait) {
 				super();

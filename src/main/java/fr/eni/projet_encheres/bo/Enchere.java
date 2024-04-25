@@ -52,4 +52,10 @@ public class Enchere {
 	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
+
+	@Override
+	public String toString() {
+		return "Enchere [noEnchere=" + noEnchere + ", dateEnchere=" + dateEnchere + ", montantEnchere=" + montantEnchere
+				+ ", article=" + article + ", utilisateur=" + utilisateur + "]";
+	}
 }
