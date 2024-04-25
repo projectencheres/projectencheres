@@ -2,7 +2,6 @@ package fr.eni.projet_encheres.dal;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import fr.eni.projet_encheres.bo.Article;

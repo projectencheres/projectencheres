@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public class CategorieRowMapper implements RowMapper<Categorie> {
     @Override
-    public Categorie mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Categorie mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException {
         Categorie categorie = new Categorie();
 
         categorie.setNoCategorie(rs.getInt("no_categorie"));

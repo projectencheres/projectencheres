@@ -31,4 +31,22 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
         return jdbcTemplate.queryForObject(sql, new EnchereRowMapper(), noEnchere);
     }
+
+/*     @Override
+    public List<Enchere> findByName() {
+        String sql = "SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur FROM encheres";
+        return jdbcTemplate.query(sql, new EnchereRowMapper());
+    }
+
+    @override
+    public List<Enchere> findByCategorie() {
+        String sql = "";
+        return jdbcTemplate.query(sql, new EnchereRowMapper());
+    }
+
+    @override
+    public List<Enchere> findByNameAndCategorie() {
+        String sql = "";
+        return jdbcTemplate.query(sql, new EnchereRowMapper());
+    } */
 }
