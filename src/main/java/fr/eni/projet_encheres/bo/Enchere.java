@@ -7,10 +7,20 @@ public class Enchere {
     private int noEnchere;
     private Date dateEnchere;
     private Double montantEnchere;
-    private int noArticle;
-    private int noUtilisateur;
-    
-    // Getters and Setters
+	private Article article;
+	private Utilisateur utilisateur;
+
+	public Enchere() {}
+
+	public Enchere(int noEnchere, Date dateEnchere, Double montantEnchere, Article article, Utilisateur utilisateur) {
+		this.noEnchere = noEnchere;
+		this.dateEnchere = dateEnchere;
+		this.montantEnchere = montantEnchere;
+		this.article = article;
+		this.utilisateur = utilisateur;
+	}
+
+	// Getters and Setters
     
 	public int getNoEnchere() {
 		return noEnchere;
@@ -30,19 +40,16 @@ public class Enchere {
 	public void setMontantEnchere(Double montantEnchere) {
 		this.montantEnchere = montantEnchere;
 	}
-	public int getNoArticle() {
-		return noArticle;
+	public Article getArticle() {
+		return article;
 	}
-	public void setNoArticle(int noArticle) {
-		this.noArticle = noArticle;
+	public void setArticle(Article article) {
+		this.article = article;
 	}
-	public int getNoUtilisateur() {
-		return noUtilisateur;
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
-	public void setNoUtilisateur(int noUtilisateur) {
-		this.noUtilisateur = noUtilisateur;
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
-
-    
-    
 }

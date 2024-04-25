@@ -18,7 +18,9 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
     @Override
     public List<Enchere> findAllEncheres() {
-        String sql = " SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur from encheres";
+        String sql = "SELECT e.*, a.*, u.* FROM encheres e"
+                + " INNER JOIN articles a on e.no_article = a.no_article"
+                + " INNER JOIN utilisateurs u on e.no_utilisateur = u.no_utilisateur";
 
         return jdbcTemplate.query(sql, new EnchereRowMapper());
     }

@@ -1,7 +1,9 @@
 package fr.eni.projet_encheres.dal.RowMappers;
 
+import fr.eni.projet_encheres.bo.Article;
 import fr.eni.projet_encheres.bo.Enchere;
 
+import fr.eni.projet_encheres.bo.Utilisateur;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -15,8 +17,38 @@ public class EnchereRowMapper implements RowMapper<Enchere> {
         enchere.setNoEnchere(rs.getInt("no_enchere"));
         enchere.setDateEnchere(rs.getDate("date_enchere"));
         enchere.setMontantEnchere(rs.getDouble("montant_enchere"));
-        enchere.setNoArticle(rs.getInt("no_article"));
-        enchere.setNoUtilisateur(rs.getInt("no_utilisateur"));
+
+        Article article = new Article(
+                rs.getInt("no_article"),
+                rs.getString("nom_article"),
+                rs.getString("description"),
+                rs.getDate("date_debut_encheres"),
+                rs.getDate("date_fin_encheres"),
+                rs.getDouble("mise_a_prix"),
+                rs.getDouble("prix_vente"),
+                rs.getString("etat_vente"),
+                rs.getInt("categorie_article"),
+                rs.getInt("lieu_retrait")
+        );
+
+        enchere.setArticle(article);
+
+        Utilisateur utilisateur = new Utilisateur(
+                rs.getInt("no_utilisateur"),
+                rs.getString("pseudo"),
+                rs.getString("nom"),
+                rs.getString("prenom"),
+                rs.getString("email"),
+                rs.getString("telephone"),
+                rs.getString("rue"),
+                rs.getString("code_postal"),
+                rs.getString("ville"),
+                rs.getString("mot_de_passe"),
+                rs.getDouble("credit"),
+                rs.getBoolean("administrateur")
+        );
+
+        enchere.setUtilisateur(utilisateur);
 
         return enchere;
 
