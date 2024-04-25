@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{modele-page :: layout('Registration',~{::link} , ~{::#content-wrapper})}">
+<head>
+    <meta charset="UTF-8">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="output.css" >
+</head>
+<body>
+
+    <div id="content-wrapper">
+
+        <!--create HTML registration form-->
+        <div class="bg-blue-100" th:if="${param.success}">
+            <p class="font-bold">You have successfully signed in</p>
+        </div>
+
+        <h1>S'Inscrire</h1>
+
+        <form th:action="@{/inscription}" method="post" th:object="${utilisateur}">
+
+            <div class="border-b border-gray-900/10 pb-12">
+                <h2>Mon Profil</h2>
+
+                <div>
+                    <div>
+                        <label for="pseudo">Psuedo: </label>
+                        <div>
+                            <input type="text" name="pseudo" id="pseudo" th:field="*{pseudo}" required>
+                        </div>
+                        <span style="color: red" th:if="${#fields.hasErrors('pseudo')}" th:errors="*{pseudo}"></span>
+                    </div>
+
+                    <div>
+                        <label for="nom">Nom: </label>
+                        <div>
+                            <input type="text" name="nom" id="nom" th:field="*{nom}">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="prenom">Prenom: </label>
+                        <div>
+                            <input type="text" name="prenom" id="prenom" th:field="*{prenom}">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="email">Email: </label>
+                        <div>
+                            <input type="email" name="email" id="email" th:field="*{email}" required>
+                        </div>
+                        <span style="color: red" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                    </div>
+
+                    <div>
+                        <label for="phone">Telephone: </label>
+                        <div>
+                            <input type="tel" name="phone" id="phone" th:field="*{telephone}" placeholder="0x xx xx xx xx" pattern="[0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2} [0-9]{2}">
+                        </div>
+                        <span style="color: red" th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"></span>
+                    </div>
+
+                    <div>
+                        <label for="rue">Rue: </label>
+                        <div>
+                            <input type="text" name="rue" id="rue" th:field="*{rue}">
+                        </div>
+                        <span style="color: red" th:if="${#fields.hasErrors('rue')}" th:errors="*{rue}"></span>
+                    </div>
+
+                    <div>
+                        <label for="codePostal">Code postal: </label>
+                        <div>
+                            <input type="text" name="codePostal" id="codePostal" th:field="*{codePostal}">
+                        </div>
+                        <span style="color: red" th:if="${#fields.hasErrors('codePostal')}" th:errors="*{codePostal}"></span>
+                    </div>
+
+                    <div>
+                        <label for="ville">Ville: </label>
+                        <div>
+                            <input type="text" name="ville" id="ville" th:field="*{ville}">
+                        </div>
+                        <span style="color: red" th:if="${#fields.hasErrors('ville')}" th:errors="*{ville}"></span>
+                    </div>
+
+                    <div>
+                        <label for="mot de passe">Mot de Passe: </label>
+                        <div>
+                            <input type="password" name="mot de passe" id="mot de passe" th:field="*{motDePasse}" required>
+                        </div>
+                        <span style="color: red" th:if="${#fields.hasErrors('motDePasse')}" th:errors="*{motDePasse}"></span>
+                    </div>
+
+                    <div>
+                        <label for="administrateur">Administrateur: </label>
+                        <div>
+                            <input type="checkbox" name="administrateur" id="administrateur" th:field="*{administrateur}" required>
+                        </div>
+                        <span style="color: red" th:if="${#fields.hasErrors('administrateur')}" th:errors="*{administrateur}"></span>
+                    </div>
+
+<!--                    <div>-->
+<!--                        <label for="confirmation">Confirmation: </label>-->
+<!--                        <div>-->
+<!--                            <input type="password" name="confirmation" id="confirmation" th:field="*{motDePasse}" required>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <br>
+
+                    <div>
+                        <button type="submit">S'incrire</button>
+                        <br>
+                        <span>Deja inscrit? <a th:href="@{/login}">Se Connecter</a></span>
+                    </div>
+
+                </div>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

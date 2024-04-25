@@ -58,3 +58,6 @@ CREATE TABLE Encheres (
 -- Relations entre les tables
 ALTER TABLE Articles ADD FOREIGN KEY (categorie_article) REFERENCES Categories(no_categorie);
 ALTER TABLE Articles ADD FOREIGN KEY (lieu_retrait) REFERENCES Retraits(no_retrait);
+
+-- Additional constraints
+ALTER TABLE Utilisateurs ADD CONSTRAINT pseudo_unique UNIQUE (pseudo);
