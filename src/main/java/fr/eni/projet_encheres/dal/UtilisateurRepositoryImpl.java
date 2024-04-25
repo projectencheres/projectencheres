@@ -49,26 +49,14 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
     @Override
     public Utilisateur save(Utilisateur utilisateur) {
-        String sql = "INSERT INTO utilisateurs (no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?,?,?,?)";
+        String sql = "INSERT INTO utilisateurs (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
+                    + "VALUES (:pseudo, :nom, :prenom, :email, :telephone, :rue, :code_postal, :ville, :mot_de_passe, :credit, :administrateur)";
 
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        MapSqlParameterSource parameters = new MapSqlParameterSource();
-        parameters.addValue("pseudo", utilisateur.getPseudo());
-        parameters.addValue("nom", utilisateur.getNom());
-        parameters.addValue("prenom", utilisateur.getPrenom());
-        parameters.addValue("email", utilisateur.getEmail());
-        parameters.addValue("telephone", utilisateur.getTelephone());
-        parameters.addValue("rue", utilisateur.getRue());
-        parameters.addValue("code_postal", utilisateur.getCodePostal());
-        parameters.addValue("ville", utilisateur.getVille());
-        parameters.addValue("mot_de_passe", utilisateur.getMotDePasse());
-        parameters.addValue("credit", utilisateur.getCredit());
-        parameters.addValue("administrateur", utilisateur.getAdministrateur());
+        MapSqlParameterSource parameters = getMapSqlParameterSource(utilisateur);
 
-        namedParameterJdbcTemplate.update(sql, parameters, keyHolder, new String[] {"noUtilisateur"});
-
+        namedParameterJdbcTemplate.update(sql, parameters, keyHolder, new String[] {"no_utilisateur"});
         utilisateur.setNoUtilisateur(keyHolder.getKey().intValue());
-
         return utilisateur;
     }
 
@@ -98,5 +86,21 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     public void deleteById(int id) {
         String sql = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";
         jdbcTemplate.update(sql, id);
+    }
+
+    private static MapSqlParameterSource getMapSqlParameterSource(Utilisateur utilisateur) {
+        MapSqlParameterSource parameters = new MapSqlParameterSource();
+        parameters.addValue("pseudo", utilisateur.getPseudo());
+        parameters.addValue("nom", utilisateur.getNom());
+        parameters.addValue("prenom", utilisateur.getPrenom());
+        parameters.addValue("email", utilisateur.getEmail());
+        parameters.addValue("telephone", utilisateur.getTelephone());
+        parameters.addValue("rue", utilisateur.getRue());
+        parameters.addValue("code_postal", utilisateur.getCodePostal());
+        parameters.addValue("ville", utilisateur.getVille());
+        parameters.addValue("mot_de_passe", utilisateur.getMotDePasse());
+        parameters.addValue("credit", utilisateur.getCredit());
+        parameters.addValue("administrateur", utilisateur.getAdministrateur());
+        return parameters;
     }
 }

@@ -5,15 +5,9 @@ import fr.eni.projet_encheres.bo.Utilisateur;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
-
-import java.util.Optional;
-
 
 @Controller
 @RequestMapping("/inscription")
@@ -33,14 +27,32 @@ public class RegistrationController {
 
     @PostMapping
     public String registerUtilisateur(
-            @ModelAttribute("utilisateur") @Valid Utilisateur utilisateur,
+            @Valid
+            @ModelAttribute("utilisateur")  Utilisateur utilisateur,
+            @RequestParam("motDePasseConfirmation") String motDePasseConfirmation,
+            @RequestParam String action,
+            Model model,
             BindingResult result
     ) {
         if (result.hasErrors()) {
             return "utilisateurs/registration";
         }
 
+        if(!utilisateur.getMotDePasse().equals(motDePasseConfirmation)) {
+            model.addAttribute("passwordMismatch", true);
+            return "utilisateurs/registration";
+        }
+
+        if ("create".equals(action)) {
+            utilisateur.setCredit(0.0);
+            utilisateurService.save(utilisateur);
+            return "redirect:/encheres";
+        } else if("cancel".equals(action)) {
+            return "redirect:/encheres";
+        }
+
+        utilisateur.setCredit(0.0);
         utilisateurService.save(utilisateur);
-        return "redirect:/index";
+        return "redirect:/encheres";
     }
 }
