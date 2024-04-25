@@ -3,37 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>Détails de l'Utilisateur</title>
-    <link rel="stylesheet" href="css/output.css" >
-    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body >
-	<div id="content-wrapper">
-			<h1>Détails de l'Utilisateur</h1>
-	    <table>
-	        <tr>
-	            <th>No Utilisateur</th>
-	            <th>Pseudo</th>
-	            <th>Nom</th>
-	            <th>Prénom</th>
-	            <th>Email</th>
-	            <th>Téléphone</th>
-	            <th>Rue</th>
-	            <th>Code Postal</th>
-	            <th>Ville</th>
-	        </tr>
-	        <tr>
-	            <td th:text="${utilisateur.noUtilisateur}"></td>
-	            <td th:text="${utilisateur.pseudo}"></td>
-	            <td th:text="${utilisateur.nom}"></td>
-	            <td th:text="${utilisateur.prenom}"></td>
-	            <td th:text="${utilisateur.email}"></td>
-	            <td th:text="${utilisateur.telephone}"></td>
-	            <td th:text="${utilisateur.rue}"></td>
-	            <td th:text="${utilisateur.codePostal}"></td>
-	            <td th:text="${utilisateur.ville}"></td>
-	        </tr>
-	    </table>
-	</div>
-    
+<body class="bg-gray-100">
+    <div id="content-wrapper" class="flex justify-center items-center h-full">
+        <div class="bg-white shadow overflow-hidden sm:rounded-lg w-96">
+            <div class="px-4 py-5 sm:px-6">
+                <h3 class="text-lg leading-6 font-medium text-gray-900 text-center">Informations de l'utilisateur</h3>
+            </div>
+            <div class="border-t border-gray-200">
+                <dl>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">No Utilisateur</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.noUtilisateur}"></dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">Pseudo</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.pseudo}"></dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">Nom</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.nom}"></dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">Prénom</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.prenom}"></dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">Email</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.email}"></dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">Téléphone</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.telephone}"></dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">Rue</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.rue}"></dd>
+                    </div>
+                    <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">Code Postal</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.codePostal}"></dd>
+                    </div>
+                    <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                        <dt class="text-sm font-medium text-gray-500 text-center">Ville</dt>
+                        <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 text-center" th:text="' : ' + ${utilisateur.ville}"></dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
