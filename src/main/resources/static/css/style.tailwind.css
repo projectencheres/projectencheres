@@ -64,5 +64,32 @@ footer {
 }
 
 .btn {
-  @apply border border-black p-2 rounded-md
+  @apply  p-2 bg-secondary shadow-sm
+}
+
+.btn:hover {
+  @apply  p-2 bg-primary shadow-lg border border-tertiary
+}
+input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+input:focus {
+  /* Styles pour l'état focus */
+  border-color: blue;
+  outline: none;
+}
+
+input[type=text] {
+  @apply border border-tertiary
+}
+
+input[type=text]:focus {
+  @apply bg-primary border-transparent
+}
+
+input[type=text]:focus::placeholder {
+  @apply text-transparent
 }
