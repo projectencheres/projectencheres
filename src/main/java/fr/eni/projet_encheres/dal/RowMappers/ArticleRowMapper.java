@@ -9,7 +9,7 @@ import java.sql.SQLException;
     
 public class ArticleRowMapper implements RowMapper<Article> {
     @Override
-    public Article mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Article mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException {
         Article article = new Article();
 
         article.setNoArticle(rs.getInt("no_article"));

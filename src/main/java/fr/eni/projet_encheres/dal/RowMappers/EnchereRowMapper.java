@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class EnchereRowMapper implements RowMapper<Enchere> {
     @Override
-    public Enchere mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Enchere mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException {
         Enchere enchere = new Enchere();
 
         enchere.setNoEnchere(rs.getInt("no_enchere"));

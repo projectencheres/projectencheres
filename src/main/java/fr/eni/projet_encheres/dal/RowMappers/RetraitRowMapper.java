@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class RetraitRowMapper implements RowMapper<Retrait> {
 
     @Override
-    public Retrait mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Retrait mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException {
         Retrait retrait = new Retrait();
 
         retrait.setNoRetrait(rs.getInt("no_retrait"));
