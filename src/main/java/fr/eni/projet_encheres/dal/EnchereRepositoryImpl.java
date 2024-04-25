@@ -32,10 +32,15 @@ public class EnchereRepositoryImpl implements EnchereRepository {
         return jdbcTemplate.queryForObject(sql, new EnchereRowMapper(), noEnchere);
     }
 
-/*     @Override
-    public List<Enchere> findByName() {
-        String sql = "SELECT no_enchere, date_enchere, montant_enchere, no_article, no_utilisateur FROM encheres";
-        return jdbcTemplate.query(sql, new EnchereRowMapper());
+    @Override
+    public List<Enchere> findByName(String _name) {
+        String build = '%'+_name+'%';
+        System.out.println(build);
+        String sql = "SELECT e.no_enchere, e.date_enchere, e.montant_enchere, e.no_article, a.*"
+        +" FROM encheres e"
+        +" LEFT JOIN articles a ON e.no_article = a.no_article"
+        +" WHERE LOWER(a.nom_article) LIKE ?";
+        return jdbcTemplate.query(sql, new EnchereRowMapper(), build);
     }
 
     @override
@@ -48,5 +53,5 @@ public class EnchereRepositoryImpl implements EnchereRepository {
     public List<Enchere> findByNameAndCategorie() {
         String sql = "";
         return jdbcTemplate.query(sql, new EnchereRowMapper());
-    } */
+    }
 }

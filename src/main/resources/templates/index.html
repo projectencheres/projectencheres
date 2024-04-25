@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Liste des Encheres</title>
-    <link rel="stylesheet" href="css/output.css" >
+    <link rel="stylesheet" th:href="@{/css/output.css}" >
 </head>
 <body>
     <div id="content-wrapper" class="flex flex-col gap-8">
@@ -18,10 +18,10 @@
                             <div class="flex justify-between items-center">
                                 <p>Catégorie</p>
                                 <select name="filter_categorie" class="border rounded">
-                                    <option value="Electronique">Electronique</option>
-                                    <option value="Mobilier">Mobilier</option>
+                                    <option value="Electronique">Informatique</option>
+                                    <option value="Mobilier">Ameublement</option>
                                     <option value="Vêtements">Vêtements</option>
-                                    <option value="Livres">Livres</option>
+                                    <option value="Livres">Sport&Loisirs</option>
                                 </select>
                             </div>
                         </div>
