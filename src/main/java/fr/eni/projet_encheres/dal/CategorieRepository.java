@@ -9,5 +9,5 @@ public interface CategorieRepository {
 
     List<Categorie> findAllCategories();
 
-    Optional<Categorie> findById(int id);
+    Optional<Categorie> findById(int no_categorie);
 }

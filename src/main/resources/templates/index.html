@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{modele-page :: layout('Liste des enchères',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Liste des Encheres</title>
+    <link rel="stylesheet" href="css/output.css" >
 </head>
 <body>
+<<<<<<< HEAD
 <div>
     <div th:each="enchere : ${encheres}">
         <a th:href="@{/encheres/(noEnchere=${enchere.noEnchere})}">
@@ -16,7 +18,44 @@
     <div>
     	<a href="#"> gerer mon profil </a>
     </div>
+=======
+    <div id="content-wrapper" class="flex flex-col gap-8">
+        <div class="flex flex-col gap-4 pt-4">
+            <p class="text-h1 text-center">Liste des enchères</p>
+            <div class="flex flex-col gap-2">
+                <p>Filtre:</p>
+                <div class="flex justify-between">
+                    <div class="flex flex-col w-[45%] gap-2">
+                        <input type="text" name="categorie" id="select" class="border rounded" placeholder="Le nom de l'article">
+                        <div class="flex justify-between items-center">
+                            <p>Catégorie</p>
+                            <select name="select" id="select">
+                                <option value="test">test</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="w-[45%]">
+                        <a href="/" class="btn flex justify-center items-center w-full h-full">Recherche</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-4 gap-y-6">
+            <div th:each="enchere : ${encheres}" >
+                <a th:href="@{/encheres/(noEnchere=${enchere.noEnchere})}" class="flex gap-8 border h-36 p-2">
+                    <div class="w-28 h-full border">
+                    </div>
+                    <div>
+>>>>>>> 017b3ed9e5d0ec42069c499d2eece72849477888
 
-</div>
+                        <p class="underline text-h3 pb-2">Nom de l'article</p>
+                        <p class="text-h4">Prix: <span th:text="${enchere.montantEnchere}+ ' '+ points"></span></p>
+                        <p class="text-h4 pb-2">Fin de l'enchère: <span th:text="${enchere.dateEnchere}"></span></p>
+                        <p class="text-h4">Vendeur: <span th:text="${enchere.noUtilisateur}"></span></p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
