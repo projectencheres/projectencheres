@@ -1,34 +1,39 @@
 <!DOCTYPE html>
-<html th:replace="~{modele-page :: layout('Modifier profil',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
+<html th:replace="~{modele-page :: layout('Voir le profil',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Détails de l'Utilisateur</title>
+    <link rel="stylesheet" href="css/output.css" >
+    
 </head>
-<body>
-    <h1>Détails de l'Utilisateur</h1>
-    <table>
-        <tr>
-            <th>No Utilisateur</th>
-            <th>Pseudo</th>
-            <th>Nom</th>
-            <th>Prénom</th>
-            <th>Email</th>
-            <th>Téléphone</th>
-            <th>Rue</th>
-            <th>Code Postal</th>
-            <th>Ville</th>
-        </tr>
-        <tr>
-            <td th:text="${utilisateur.noUtilisateur}"></td>
-            <td th:text="${utilisateur.pseudo}"></td>
-            <td th:text="${utilisateur.nom}"></td>
-            <td th:text="${utilisateur.prenom}"></td>
-            <td th:text="${utilisateur.email}"></td>
-            <td th:text="${utilisateur.telephone}"></td>
-            <td th:text="${utilisateur.rue}"></td>
-            <td th:text="${utilisateur.codePostal}"></td>
-            <td th:text="${utilisateur.ville}"></td>
-        </tr>
-    </table>
+<body >
+	<div id="content-wrapper">
+			<h1>Détails de l'Utilisateur</h1>
+	    <table>
+	        <tr>
+	            <th>No Utilisateur</th>
+	            <th>Pseudo</th>
+	            <th>Nom</th>
+	            <th>Prénom</th>
+	            <th>Email</th>
+	            <th>Téléphone</th>
+	            <th>Rue</th>
+	            <th>Code Postal</th>
+	            <th>Ville</th>
+	        </tr>
+	        <tr>
+	            <td th:text="${utilisateur.noUtilisateur}"></td>
+	            <td th:text="${utilisateur.pseudo}"></td>
+	            <td th:text="${utilisateur.nom}"></td>
+	            <td th:text="${utilisateur.prenom}"></td>
+	            <td th:text="${utilisateur.email}"></td>
+	            <td th:text="${utilisateur.telephone}"></td>
+	            <td th:text="${utilisateur.rue}"></td>
+	            <td th:text="${utilisateur.codePostal}"></td>
+	            <td th:text="${utilisateur.ville}"></td>
+	        </tr>
+	    </table>
+	</div>
+    
 </body>
 </html>

@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html th:replace="~{modele-page :: layout('Liste des enchères',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>Modifier l'Utilisateur</title>
+	<link rel="stylesheet" href="css/output.css" >
 </head>
-<body>
-    <h1>Modifier l'Utilisateur</h1>
+<body >
+<div id="content-wrapper">
+	 <h1>Modifier l'Utilisateur</h1>
     <form action="/utilisateurs/{id}/modifier" method="post" th:object="${utilisateur}">
         <input type="hidden" th:field="*{noUtilisateur}"/>
         <label for="pseudo">Pseudo:</label>
@@ -26,5 +29,7 @@
         <input type="text" id="ville" th:field="*{ville}"/><br/>
         <input type="submit" value="Enregistrer"/>
     </form>
+</div>
+   
 </body>
 </html>
