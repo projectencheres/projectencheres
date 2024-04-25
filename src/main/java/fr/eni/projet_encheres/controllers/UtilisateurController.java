@@ -3,6 +3,7 @@ package fr.eni.projet_encheres.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,12 @@ public class UtilisateurController {
 		return "showUtilisateur";
 	}
 	
+	@PostMapping("/{id}/modifier")
+	public String updateUtilisateur(@ModelAttribute Utilisateur utilisateur) {
+		utilisateurService.save(utilisateur);
+		return "redirect:/utilisateurs";
+	}
+	
 	
 	@GetMapping("/{id}/modifier")
 	public String updateUtilisateur(@PathVariable("id") int noUtilisateur, Model model) throws UtilisateurNotFound {
@@ -45,7 +52,7 @@ public class UtilisateurController {
 		return "updateUtilisateur";
 	}
 	
-	@PostMapping("/{id}/supprimer")
+	@GetMapping("/{id}/supprimer")
 	public String deleteProfil(@PathVariable("id") int idUtilisateur) {
 		utilisateurService.deleteProfil(idUtilisateur);
 		return "redirect:/utilisateurs";
