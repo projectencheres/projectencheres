@@ -21,6 +21,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     @Override
     public void deleteProfil(int idUtilisateur) {
         utilisateurRepository.deleteById(idUtilisateur);
+		
     }
 
     @Override

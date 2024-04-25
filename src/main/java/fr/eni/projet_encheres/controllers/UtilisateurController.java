@@ -3,9 +3,13 @@ package fr.eni.projet_encheres.controllers;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import fr.eni.projet_encheres.bll.UtilisateurService;
+import fr.eni.projet_encheres.bo.Utilisateur;
+import fr.eni.projet_encheres.exceptions.UtilisateurNotFound;
 
 @Controller
 @RequestMapping("/utilisateurs")
@@ -22,5 +26,28 @@ public class UtilisateurController {
 		model.addAttribute("utilisateurs", utilisateurService.findAll());
 		
 		return "utilisateurs";
+	}
+	
+	@GetMapping("/{id}/voir")
+	public String showUtilisateur(@PathVariable("id") int noUtilisateur, Model model) throws UtilisateurNotFound {
+		Utilisateur utilisateur = utilisateurService.findById(noUtilisateur);
+		model.addAttribute("utilisateur", utilisateur);
+		
+		return "showUtilisateur";
+	}
+	
+	
+	@GetMapping("/{id}/modifier")
+	public String updateUtilisateur(@PathVariable("id") int noUtilisateur, Model model) throws UtilisateurNotFound {
+		Utilisateur utilisateur = utilisateurService.findById(noUtilisateur);
+		model.addAttribute("utilisateur", utilisateur);
+		
+		return "updateUtilisateur";
+	}
+	
+	@PostMapping("/{id}/supprimer")
+	public String deleteProfil(@PathVariable("id") int idUtilisateur) {
+		utilisateurService.deleteProfil(idUtilisateur);
+		return "redirect:/utilisateurs";
 	}
 }
