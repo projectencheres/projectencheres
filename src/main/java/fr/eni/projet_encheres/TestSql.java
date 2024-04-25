@@ -26,9 +26,9 @@ public class TestSql implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		// ----------- Utilisateur TEST ----------- //
-		System.out.println("Test de find all users : ");
-		List<Utilisateur> utilisateurs = repoUtilisateur.findAll();
-		System.out.println(utilisateurs);
+		// System.out.println("Test de find all users : ");
+		// List<Utilisateur> utilisateurs = repoUtilisateur.findAll();
+		// System.out.println(utilisateurs);
 		
 		
 		// System.out.println("Test de find user by id : ");
@@ -47,9 +47,9 @@ public class TestSql implements CommandLineRunner {
 		// System.out.println(finalUtilisateurs);
 
 		// -------------  Article Test  ------------- //
-		System.out.println("Test de find all articles : ");
-		List<Article> articles = repoArticle.findAll();
-		System.out.println(articles);
+		// System.out.println("Test de find all articles : ");
+		// List<Article> articles = repoArticle.findAll();
+		// System.out.println(articles);
 		
 		
 		// System.out.println("Test de find article by id : ");

@@ -8,4 +8,7 @@ public interface EnchereRepository {
 
     List<Enchere> findAllEncheres();
     Enchere findById(int noEnchere);
+    List<Enchere> findByName(String _name);
+    List<Enchere> findByCategorie();
+    List<Enchere> findByNameAndCategorie();
 }

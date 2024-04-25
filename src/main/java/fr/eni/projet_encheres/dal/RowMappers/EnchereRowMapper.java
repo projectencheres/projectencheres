@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 public class EnchereRowMapper implements RowMapper<Enchere> {
     @Override
-    public Enchere mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public Enchere mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException {
         Enchere enchere = new Enchere();
 
         enchere.setNoEnchere(rs.getInt("no_enchere"));
@@ -21,31 +21,26 @@ public class EnchereRowMapper implements RowMapper<Enchere> {
         Article article = new Article(
                 rs.getInt("no_article"),
                 rs.getString("nom_article"),
-                rs.getString("description"),
-                rs.getDate("date_debut_encheres"),
                 rs.getDate("date_fin_encheres"),
-                rs.getDouble("mise_a_prix"),
                 rs.getDouble("prix_vente"),
-                rs.getString("etat_vente"),
-                rs.getInt("categorie_article"),
-                rs.getInt("lieu_retrait")
+                rs.getInt("categorie_article")
         );
 
         enchere.setArticle(article);
 
         Utilisateur utilisateur = new Utilisateur(
-                rs.getInt("no_utilisateur"),
-                rs.getString("pseudo"),
-                rs.getString("nom"),
-                rs.getString("prenom"),
-                rs.getString("email"),
-                rs.getString("telephone"),
-                rs.getString("rue"),
-                rs.getString("code_postal"),
-                rs.getString("ville"),
-                rs.getString("mot_de_passe"),
-                rs.getDouble("credit"),
-                rs.getBoolean("administrateur")
+                // rs.getInt("no_utilisateur"),
+                // rs.getString("pseudo"),
+                // rs.getString("nom"),
+                // rs.getString("prenom"),
+                // rs.getString("email"),
+                // rs.getString("telephone"),
+                // rs.getString("rue"),
+                // rs.getString("code_postal"),
+                // rs.getString("ville"),
+                // rs.getString("mot_de_passe"),
+                // rs.getDouble("credit"),
+                // rs.getBoolean("administrateur")
         );
 
         enchere.setUtilisateur(utilisateur);
