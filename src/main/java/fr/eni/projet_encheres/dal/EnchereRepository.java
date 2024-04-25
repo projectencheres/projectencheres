@@ -7,8 +7,8 @@ import java.util.List;
 public interface EnchereRepository {
 
     List<Enchere> findAllEncheres();
-/*     List<Enchere> findByName();
-    List<Enchere> findByCategorie();
-    List<Enchere> findByNameAndCategorie(); */
     Enchere findById(int noEnchere);
+    List<Enchere> findByName(String _name);
+    List<Enchere> findByCategorie();
+    List<Enchere> findByNameAndCategorie();
 }
