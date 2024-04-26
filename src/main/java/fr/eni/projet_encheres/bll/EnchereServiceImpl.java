@@ -26,12 +26,12 @@ public class EnchereServiceImpl implements EnchereService{
     }
 
     @override
-    public List<Enchere> findByCategorie() {
-        return enchereRepository.findByCategorie();
+    public List<Enchere> findByCategorie(int noCategorie) {
+        return enchereRepository.findByCategorie(noCategorie);
     }
 
     @Override
-    public List<Enchere> findByNameAndCategorie() {
-        return enchereRepository.findByNameAndCategorie();
+    public List<Enchere> findByNameAndCategorie(String _name, int noCategorie) {
+        return enchereRepository.findByNameAndCategorie(_name, noCategorie);
     }
 }
