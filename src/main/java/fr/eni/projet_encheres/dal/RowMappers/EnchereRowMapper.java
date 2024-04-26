@@ -29,10 +29,10 @@ public class EnchereRowMapper implements RowMapper<Enchere> {
         enchere.setArticle(article);
 
         Utilisateur utilisateur = new Utilisateur(
-                // rs.getInt("no_utilisateur"),
+                rs.getInt("no_utilisateur"),
                 // rs.getString("pseudo"),
-                // rs.getString("nom"),
-                // rs.getString("prenom"),
+                rs.getString("nom"),
+                rs.getString("prenom")
                 // rs.getString("email"),
                 // rs.getString("telephone"),
                 // rs.getString("rue"),
