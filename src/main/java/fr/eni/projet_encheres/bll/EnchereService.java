@@ -7,6 +7,6 @@ import java.util.List;
 public interface EnchereService {
     List<Enchere> findAllEncheres();
     List<Enchere> findByName(String _name);
-    List<Enchere> findByCategorie();
-    List<Enchere> findByNameAndCategorie();
+    List<Enchere> findByCategorie( int noCategorie);
+    List<Enchere> findByNameAndCategorie(String _name, int noCategorie);
 }

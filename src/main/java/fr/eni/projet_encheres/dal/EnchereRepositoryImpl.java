@@ -34,24 +34,36 @@ public class EnchereRepositoryImpl implements EnchereRepository {
 
     @Override
     public List<Enchere> findByName(String _name) {
-        String build = '%'+_name+'%';
+        String build = '%' + _name.toLowerCase() + '%';
         System.out.println(build);
-        String sql = "SELECT e.no_enchere, e.date_enchere, e.montant_enchere, e.no_article, a.*"
+        String sql = "SELECT e.no_enchere, e.date_enchere, e.montant_enchere, e.no_article, a.*, u.*"
         +" FROM encheres e"
-        +" LEFT JOIN articles a ON e.no_article = a.no_article"
+        +" INNER JOIN articles a ON e.no_article = a.no_article"
+        +" INNER JOIN utilisateurs u on e.no_utilisateur = u.no_utilisateur"
         +" WHERE LOWER(a.nom_article) LIKE ?";
         return jdbcTemplate.query(sql, new EnchereRowMapper(), build);
     }
 
     @override
-    public List<Enchere> findByCategorie() {
-        String sql = "";
-        return jdbcTemplate.query(sql, new EnchereRowMapper());
+    public List<Enchere> findByCategorie(int noCategorie) {
+        String sql = "SELECT e.no_enchere, e.date_enchere, e.montant_enchere, e.no_article, e.no_utilisateur, a.*, u.* "
+            +" FROM encheres e"
+            +" INNER JOIN articles a ON e.no_article = a.no_article"
+            +" INNER JOIN categories c ON c.no_categorie = a.categorie_article"
+            +" INNER JOIN utilisateurs u on e.no_utilisateur = u.no_utilisateur"
+            +" WHERE c.no_categorie = ?";
+        return jdbcTemplate.query(sql, new EnchereRowMapper(), noCategorie);
     }
 
     @override
-    public List<Enchere> findByNameAndCategorie() {
-        String sql = "";
-        return jdbcTemplate.query(sql, new EnchereRowMapper());
+    public List<Enchere> findByNameAndCategorie(String _name, int noCategorie) {
+        String build = '%' + _name.toLowerCase() + '%';
+        String sql = "SELECT e.no_enchere, e.date_enchere, e.montant_enchere, e.no_article, e.no_utilisateur, a.*, u.*"
+            +" FROM encheres e"
+            +" INNER JOIN articles a ON e.no_article = a.no_article"
+            +" INNER JOIN categories c ON c.no_categorie = a.categorie_article"
+            +" INNER JOIN utilisateurs u on e.no_utilisateur = u.no_utilisateur"
+            +" WHERE LOWER(a.nom_article) LIKE ? AND c.no_categorie = ?";
+        return jdbcTemplate.query(sql, new EnchereRowMapper(), build, noCategorie);
     }
 }

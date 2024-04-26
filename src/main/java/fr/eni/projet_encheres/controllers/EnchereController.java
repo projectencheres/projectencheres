@@ -26,10 +26,26 @@ public class EnchereController {
         return "index";
     }
 
+    // @PostMapping("/encheres/filtre")
+    // public String homePageFiltered(Model model, @RequestParam("filter_query") String filter_query, @RequestParam("filter_categorie") String filter_categorie) {
+    //     model.addAttribute("encheres", enchereService.findByName(filter_query));
+    //     return "index";
+    // }
+
     @PostMapping("/encheres/filtre")
-    public String homePageFiltered(Model model, @RequestParam("filter_query") String filter_query, @RequestParam("filter_categorie") String filter_categorie) {
-        model.addAttribute("encheres", enchereService.findByName(filter_query));
+    public String homePageFiltered(Model model, @RequestParam("filter_query") String filter_query, @RequestParam("filter_categorie") int filter_categorie) {
+        System.out.println(filter_categorie);
+        if (!filter_query.isEmpty() && filter_categorie != 0) {
+            model.addAttribute("encheres", enchereService.findByNameAndCategorie(filter_query, filter_categorie));
+        } else if (!filter_query.isEmpty()) {
+            model.addAttribute("encheres", enchereService.findByName(filter_query));
+        } else if (filter_categorie != 0) {
+            model.addAttribute("encheres", enchereService.findByCategorie(filter_categorie));
+        } else {
+            return "redirect:/encheres";
+        }
         return "index";
     }
+
     
 }
