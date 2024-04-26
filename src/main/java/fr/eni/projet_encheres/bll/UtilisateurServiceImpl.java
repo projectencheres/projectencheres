@@ -45,8 +45,8 @@ public class UtilisateurServiceImpl implements UtilisateurService {
 	}
 
     @Override
-    public Optional<Utilisateur> findByPseudo(String pseudo) {
-        return utilisateurRepository.findByPseudo(pseudo);
+    public Optional<Utilisateur> findByPseudoOrEmail(String identifiant) {
+        return utilisateurRepository.findByPseudoOrEmail(identifiant);
     }
 
     @Override
