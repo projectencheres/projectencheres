@@ -67,20 +67,23 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     }
 
     @Override
-    public Optional<Utilisateur> findByPseudo(String pseudo) {
+    public Optional<Utilisateur> findByPseudoOrEmail(String identifiant) {
+
+
         Optional<Utilisateur> optionalUtilisateur;
 
-        String sql = "SELECT * from utilisateurs WHERE pseudo = ?";
+        String buildIdentifiant = '%' + identifiant.toLowerCase() + '%';
+        String sql = "SELECT * from utilisateurs WHERE LOWER(pseudo) LIKE ? OR LOWER(email) LIKE ?";
 
         try {
-            Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, new UtilisateurRowMapper(), pseudo);
+            Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, new UtilisateurRowMapper(), buildIdentifiant, buildIdentifiant);
             optionalUtilisateur = Optional.of(utilisateur);
         } catch (EmptyResultDataAccessException exc) {
             optionalUtilisateur = Optional.empty();
         }
+
         return optionalUtilisateur;
     }
-
     @Override
     public void deleteById(int id) {
         String sql = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";

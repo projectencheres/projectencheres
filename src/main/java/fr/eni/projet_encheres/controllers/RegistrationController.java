@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import jakarta.validation.Valid;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/inscription")
 public class RegistrationController {
@@ -34,7 +36,16 @@ public class RegistrationController {
             Model model,
             BindingResult result
     ) {
+
         if (result.hasErrors()) {
+            return "utilisateurs/registration";
+        }
+
+        Optional<Utilisateur> existingUtilisateurPseudo = utilisateurService.findByPseudoOrEmail(utilisateur.getPseudo());
+        Optional<Utilisateur> existingUtilisateurEmail = utilisateurService.findByPseudoOrEmail(utilisateur.getEmail());
+
+        if ((existingUtilisateurPseudo.isPresent()) || (existingUtilisateurEmail.isPresent())) {
+            model.addAttribute("pseudoOrEmailError", "Pseudo or email exists already. Please log in instead");
             return "utilisateurs/registration";
         }
 
