@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html th:replace="~{modele-page :: layout('Creation de vente',~{::link} , ~{::#content-wrapper})}"
+    xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Nouvelle vente</title>
+    <link rel="stylesheet" th:href="@{/css/output.css}" />
+</head>
+
+<body>
+    <div id="content-wrapper" class="flex flex-col gap-8">
+        <form action="#" method="post">
+            <fieldset>
+                <legend>Nouvelle vente</legend>
+
+                <div>
+                    <label for="article">Article :</label>
+                    <input type="text" id="article" name="article" />
+                </div>
+
+                <div>
+                    <label for="description">Description :</label>
+                    <textarea id="description" name="description"></textarea>
+                </div>
+
+                <div>
+                    <label for="categorie">Catégorie :</label>
+                    <select id="categorie" name="categorie">
+                        <option value="maison">Maison</option>
+                        <!-- Ajouter d'autres options de catégorie ici -->
+                    </select>
+                </div>
+
+                <div>
+                    <label for="photo">Photo de l'article :</label>
+                    <input type="file" id="photo" name="photo" />
+                </div>
+                    
+                <div>
+                    <label for="miseAPrix">Mise à prix :</label>
+                    <input type="number" id="miseAPrix" name="miseAPrix" />
+                </div>
+
+                <div>
+                    <label for="debutEnchere">Début de l'enchère :</label>
+                    <input type="date" id="debutEnchere" name="debutEnchere" />
+                </div>
+                    
+                <div>
+                    <label for="finEnchere">Fin de l'enchère :</label>
+                    <input type="date" id="finEnchere" name="finEnchere" />
+                </div>
+                    
+                <fieldset>
+                    <legend>Retrait</legend>
+
+                    <label for="rue">Rue :</label>
+                    <input type="text" id="rue" name="rue" />
+
+                    <label for="codePostal">Code postal :</label>
+                    <input type="text" id="codePostal" name="codePostal" />
+
+                    <label for="ville">Ville :</label>
+                    <input type="text" id="ville" name="ville" />
+                </fieldset>
+
+                <div>
+                    <input type="submit" value="Enregistrer" />
+                    <a href="/encheres">Annuler</a>
+                    <a href="/encheres">Annuler la vente</a>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</body>
+
+</html>
