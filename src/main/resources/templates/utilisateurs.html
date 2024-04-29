@@ -29,7 +29,7 @@
                     <td class="px-4 py-2" th:text="${utilisateur.telephone}"></td>
                     <td class="px-4 py-2">
                     <!-- Boutons pour les actions Modifier, Supprimer et Voir -->
-                    <a class="text-blue-500 mr-2" th:href="@{/utilisateurs/{idUtilisateur}/modifier(idUtilisateur=${utilisateur.noUtilisateur})}">Modifier</a>
+					<a class="text-blue-500 mr-2" th:href="@{/utilisateurs/{id}/modifier(id=${utilisateur.noUtilisateur})}">Modifier</a>
                     <a class="text-green-500 mr-2" th:href="@{/utilisateurs/{idUtilisateur}/voir(idUtilisateur=${utilisateur.noUtilisateur})}">Voir</a>
                     <a class="text-red-500" th:href="@{/utilisateurs/{idUtilisateur}/supprimer(idUtilisateur=${utilisateur.noUtilisateur})}">Supprimer</a>
                 </td>

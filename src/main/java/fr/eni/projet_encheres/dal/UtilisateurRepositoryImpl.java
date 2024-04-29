@@ -61,9 +61,9 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
     @Override
     public void update(Utilisateur utilisateur) {
-        String sql = "UPDATE utilisateurs SET no_utilisateur = ?, pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?  WHERE no_utilisateur = ?";
-        jdbcTemplate.update(sql, utilisateur.getNoUtilisateur(), utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(),
-        utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille());
+        String sql = "UPDATE utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?  WHERE no_utilisateur = ?";
+        jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(),
+        utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getNoUtilisateur());
     }
 
     @Override
