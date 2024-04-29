@@ -12,7 +12,7 @@ public interface UtilisateurService {
     void updateProfil( Utilisateur utilisateur);
     List<Utilisateur> findAll();
     Utilisateur findById(int noUtilisateur) throws UtilisateurNotFound;
-    Optional<Utilisateur> findByPseudo(String pseudo);
+    Optional<Utilisateur> findByPseudoOrEmail(String identifiant);
     void save(Utilisateur utilisateur);
 
 }

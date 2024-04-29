@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
@@ -67,20 +68,23 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     }
 
     @Override
-    public Optional<Utilisateur> findByPseudo(String pseudo) {
-        Optional<Utilisateur> optionalUtilisateur;
+    public Optional<Utilisateur> findByPseudoOrEmail(String identifiant) {
 
-        String sql = "SELECT * from utilisateurs WHERE pseudo = ?";
 
-        try {
-            Utilisateur utilisateur = jdbcTemplate.queryForObject(sql, new UtilisateurRowMapper(), pseudo);
-            optionalUtilisateur = Optional.of(utilisateur);
-        } catch (EmptyResultDataAccessException exc) {
-            optionalUtilisateur = Optional.empty();
-        }
-        return optionalUtilisateur;
+        String buildIdentifiant = identifiant.toLowerCase();
+        String sql = "SELECT pseudo, email, mot_de_passe, administrateur from utilisateurs WHERE LOWER(pseudo) = ? OR LOWER(email) = ?";
+
+        List<Utilisateur> utilisateurs = jdbcTemplate.query(
+                sql,
+                new BeanPropertyRowMapper<>(Utilisateur.class),
+                buildIdentifiant,
+                buildIdentifiant
+        );
+
+        return utilisateurs.isEmpty() ? Optional.empty() : Optional.ofNullable(utilisateurs.get(0));
+
+
     }
-
     @Override
     public void deleteById(int id) {
     	

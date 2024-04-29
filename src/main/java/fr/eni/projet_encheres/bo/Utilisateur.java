@@ -24,11 +24,22 @@ public class Utilisateur {
     private Double credit;
     private boolean administrateur;
 
-    // getters & setters
-
+	
+	// Constructors
+	
+	public Utilisateur() {
+	}
+	
+	public Utilisateur(int noUtilisateur, String nom, String prenom) {
+		super();
+		this.noUtilisateur = noUtilisateur;
+		this.nom = nom;
+		this.prenom = prenom;
+	}
+	
 	public Utilisateur(int noUtilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String codePostal, String ville, String motDePasse, Double credit, Boolean administrateur) {
-				super();
+	String rue, String codePostal, String ville, String motDePasse, Double credit, Boolean administrateur) {
+		super();
 		this.noUtilisateur = noUtilisateur;
 		this.pseudo = pseudo;
 		this.nom = nom;
@@ -42,8 +53,9 @@ public class Utilisateur {
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
-	public Utilisateur() {
-	}
+	
+	// getters & setters
+	
 	public int getNoUtilisateur() {
 		return noUtilisateur;
 	}

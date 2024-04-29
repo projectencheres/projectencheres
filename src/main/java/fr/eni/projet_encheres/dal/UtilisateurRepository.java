@@ -11,7 +11,7 @@ public interface UtilisateurRepository {
     Optional<Utilisateur> findById(int id);
     Utilisateur save(Utilisateur Utilisateur);
     void update(Utilisateur Utilisateur);
-    Optional<Utilisateur> findByPseudo(String pseudo);
+    Optional<Utilisateur> findByPseudoOrEmail(String emailOrPseudo);
     void deleteById(int id);
 
 }
