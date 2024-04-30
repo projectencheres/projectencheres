@@ -85,15 +85,15 @@ input:focus, textarea:focus {
   outline: none;
 }
 
-input[type=text], input[type=number], textarea {
+input[type=text], input[type=number], input[type=email], input[type=tel], input[type=password],textarea {
   @apply border border-tertiary
 }
 
-input[type=text]:focus, input[type=number]:focus, textarea:focus {
+input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input[type=tel]:focus, input[type=password]:focus, textarea:focus {
   @apply bg-primary border-transparent
 }
 
-input[type=text]:focus::placeholder, input[type=number]:focus::placeholder, textarea:focus::placeholder {
+input[type=text]:focus::placeholder, input[type=number]:focus::placeholder, input[type=email]:focus::placeholder, input[type=tel]:focus::placeholder, input[type=password]:focus::placeholder, textarea:focus::placeholder {
   @apply text-transparent
 }
 
