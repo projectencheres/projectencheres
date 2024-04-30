@@ -14,5 +14,6 @@ public interface UtilisateurService {
     Utilisateur findById(int noUtilisateur) throws UtilisateurNotFound;
     Optional<Utilisateur> findByPseudoOrEmail(String identifiant);
     void save(Utilisateur utilisateur);
+    Utilisateur findByPseudo(String pseudo);
 
 }

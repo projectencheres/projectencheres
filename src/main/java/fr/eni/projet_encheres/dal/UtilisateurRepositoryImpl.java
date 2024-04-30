@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -20,6 +21,7 @@ import fr.eni.projet_encheres.dal.RowMappers.UtilisateurRowMapper;
 public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     private final JdbcTemplate jdbcTemplate;
     private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
+	private Object jdbTemplate;
 
     @Autowired
     public UtilisateurRepositoryImpl(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
@@ -72,7 +74,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
 
         String buildIdentifiant = identifiant.toLowerCase();
-        String sql = "SELECT pseudo, email, mot_de_passe, administrateur from utilisateurs WHERE LOWER(pseudo) = ? OR LOWER(email) = ?";
+        String sql = "SELECT *  from utilisateurs WHERE LOWER(pseudo) = ? OR LOWER(email) = ?";
 
         List<Utilisateur> utilisateurs = jdbcTemplate.query(
                 sql,
@@ -93,6 +95,13 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     	    
         String sql = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";
         jdbcTemplate.update(sql, id);
+    }
+    
+    
+    public Utilisateur findByPseudo(String pseudo) {
+    	String sql = "SELECT * FROM utilisateurs WHERE pseudo = ?";
+        return this.jdbcTemplate.queryForObject(sql, new UtilisateurRowMapper());
+
     }
 
     private static MapSqlParameterSource getMapSqlParameterSource(Utilisateur utilisateur) {
