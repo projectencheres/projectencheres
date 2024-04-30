@@ -62,9 +62,9 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
 
     @Override
     public void update(Utilisateur utilisateur) {
-        String sql = "UPDATE utilisateurs SET no_utilisateur = ?, pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?, mot_de_passe = ?, credit = ?, administrateur = ?  WHERE no_utilisateur = ?";
-        jdbcTemplate.update(sql, utilisateur.getNoUtilisateur(), utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(),
-        utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getMotDePasse(), utilisateur.getCredit(), utilisateur.getAdministrateur());
+        String sql = "UPDATE utilisateurs SET pseudo = ?, nom = ?, prenom = ?, email = ?, telephone = ?, rue = ?, code_postal = ?, ville = ?  WHERE no_utilisateur = ?";
+        jdbcTemplate.update(sql, utilisateur.getPseudo(), utilisateur.getNom(), utilisateur.getPrenom(),
+        utilisateur.getEmail(), utilisateur.getTelephone(), utilisateur.getRue(), utilisateur.getCodePostal(), utilisateur.getVille(), utilisateur.getNoUtilisateur());
     }
 
     @Override
@@ -87,6 +87,10 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     }
     @Override
     public void deleteById(int id) {
+    	
+    	 String deleteEncheresSql = "DELETE FROM encheres WHERE no_utilisateur = ?";
+    	 jdbcTemplate.update(deleteEncheresSql, id);
+    	    
         String sql = "DELETE FROM utilisateurs WHERE no_utilisateur = ?";
         jdbcTemplate.update(sql, id);
     }
