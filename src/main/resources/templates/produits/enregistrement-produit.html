@@ -1,78 +1,93 @@
 <!DOCTYPE html>
-<html th:replace="~{modele-page :: layout('Creation de vente',~{::link} , ~{::#content-wrapper})}"
-    xmlns:th="http://www.thymeleaf.org">
+<html
+    th:replace="~{modele-page :: layout('Creation de vente',~{::link} , ~{::#content-wrapper})}"
+    xmlns:th="http://www.thymeleaf.org"
+>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Nouvelle vente</title>
+        <link rel="stylesheet" th:href="@{/css/output.css}" />
+    </head>
 
-<head>
-    <meta charset="UTF-8" />
-    <title>Nouvelle vente</title>
-    <link rel="stylesheet" th:href="@{/css/output.css}" />
-</head>
+    <body>
+        <div id="content-wrapper" class="flex flex-col justify-center items-center gap-8 mt-4 mb-8">
+            <form action="#" method="post">
+                <fieldset
+                    class="flex flex-col gap-4 max-w-[600px] [&>div]:flex [&>div]:flex-row [&>div]:justify-between [&>div>label]:w-52"
+                >
+                    <legend class="text-h2 w-full text-center mb-8">Nouvelle vente</legend>
 
-<body>
-    <div id="content-wrapper" class="flex flex-col gap-8">
-        <form action="#" method="post">
-            <fieldset>
-                <legend>Nouvelle vente</legend>
+                    <div class="items-center">
+                        <label for="article">Article:</label>
+                        <input type="text" id="article" name="article" />
+                    </div>
 
-                <div>
-                    <label for="article">Article :</label>
-                    <input type="text" id="article" name="article" />
-                </div>
+                    <div>
+                        <label for="description">Description:</label>
+                        <textarea id="description" name="description"></textarea>
+                    </div>
 
-                <div>
-                    <label for="description">Description :</label>
-                    <textarea id="description" name="description"></textarea>
-                </div>
+                    <div class="items-center">
+                        <label for="categorie">Catégorie:</label>
+                        <select name="categorie" class="border rounded">
+                            <option value="0"></option>
+                            <option value="1">Informatique</option>
+                            <option value="2">Ameublement</option>
+                            <option value="3">Vêtements</option>
+                            <option value="4">Sport&Loisirs</option>
+                        </select>
+                    </div>
 
-                <div>
-                    <label for="categorie">Catégorie :</label>
-                    <select id="categorie" name="categorie">
-                        <option value="maison">Maison</option>
-                        <!-- Ajouter d'autres options de catégorie ici -->
-                    </select>
-                </div>
+                    <div class="items-center">
+                        <label for="photo">Photo de l'article:</label>
+                        <input type="file" id="photo" name="photo" />
+                    </div>
 
-                <div>
-                    <label for="photo">Photo de l'article :</label>
-                    <input type="file" id="photo" name="photo" />
-                </div>
-                    
-                <div>
-                    <label for="miseAPrix">Mise à prix :</label>
-                    <input type="number" id="miseAPrix" name="miseAPrix" />
-                </div>
+                    <div class="items-center">
+                        <label for="miseAPrix">Mise à prix:</label>
+                        <input type="number" id="miseAPrix" name="miseAPrix" />
+                    </div>
 
-                <div>
-                    <label for="debutEnchere">Début de l'enchère :</label>
-                    <input type="date" id="debutEnchere" name="debutEnchere" />
-                </div>
-                    
-                <div>
-                    <label for="finEnchere">Fin de l'enchère :</label>
-                    <input type="date" id="finEnchere" name="finEnchere" />
-                </div>
-                    
-                <fieldset>
-                    <legend>Retrait</legend>
+                    <div class="items-center">
+                        <label for="debutEnchere">Début de l'enchère:</label>
+                        <input type="date" id="debutEnchere" name="debutEnchere" />
+                    </div>
 
-                    <label for="rue">Rue :</label>
-                    <input type="text" id="rue" name="rue" />
+                    <div class="items-center">
+                        <label for="finEnchere">Fin de l'enchère:</label>
+                        <input type="date" id="finEnchere" name="finEnchere" />
+                    </div>
 
-                    <label for="codePostal">Code postal :</label>
-                    <input type="text" id="codePostal" name="codePostal" />
+                    <fieldset class="border border-black relative p-4">
+                        <legend class="bg-white absolute top-0 left-0 -translate-y-1/2 translate-x-1/2 px-1">
+                            Retrait
+                        </legend>
 
-                    <label for="ville">Ville :</label>
-                    <input type="text" id="ville" name="ville" />
+                        <div class="flex flex-col gap-4 max-w-[600px] [&>div]:flex [&>div]:flex-row [&>div]:justify-between [&>div]:items-center [&>div>label]:w-52">
+                            <div>
+                                <label for="rue">Rue:</label>
+                                <input type="text" id="rue" name="rue" />
+                            </div>
+
+                            <div>
+                                <label for="codePostal">Code postal:</label>
+                                <input type="text" id="codePostal" name="codePostal" />
+                            </div>
+
+                            <div>
+                                <label for="ville">Ville:</label>
+                                <input type="text" id="ville" name="ville" />
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="flex gap-2">
+                        <input type="submit" value="Enregistrer" class="btn rounded-none" />
+                        <a href="/encheres" class="btn flex justify-center items-center w-full m-w-[300px]">Annuler</a>
+                        <a href="/encheres" class="btn flex justify-center items-center w-full m-w-[300px]">Annuler la vente</a>
+                    </div>
                 </fieldset>
-
-                <div>
-                    <input type="submit" value="Enregistrer" />
-                    <a href="/encheres">Annuler</a>
-                    <a href="/encheres">Annuler la vente</a>
-                </div>
-            </fieldset>
-        </form>
-    </div>
-</body>
-
+            </form>
+        </div>
+    </body>
 </html>

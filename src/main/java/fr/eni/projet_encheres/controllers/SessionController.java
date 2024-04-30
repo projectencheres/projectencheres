@@ -13,11 +13,11 @@ import jakarta.validation.Valid;
 import java.util.Optional;
 
 @Controller
-public class RegistrationAndLoginController {
+public class SessionController {
 
     private final UtilisateurService utilisateurService;
 
-    public RegistrationAndLoginController(UtilisateurService utilisateurService) {
+    public SessionController(UtilisateurService utilisateurService) {
         this.utilisateurService = utilisateurService;
     }
 
@@ -29,20 +29,20 @@ public class RegistrationAndLoginController {
 
     @PostMapping("/inscription")
     public String registerUtilisateur(
-            @Valid
-            @ModelAttribute("utilisateur")  Utilisateur utilisateur,
+            @Valid @ModelAttribute("utilisateur") Utilisateur utilisateur,
             @RequestParam("motDePasseConfirmation") String motDePasseConfirmation,
-            @RequestParam String action,
+            @RequestParam("action") String action,
             Model model,
-            BindingResult result
-    ) {
+            BindingResult result) {
+
+        System.out.println(utilisateur);
 
         if (result.hasErrors()) {
             return "security/registration";
         }
 
-
-        Optional<Utilisateur> existingUtilisateurPseudo = utilisateurService.findByPseudoOrEmail(utilisateur.getPseudo());
+        Optional<Utilisateur> existingUtilisateurPseudo = utilisateurService
+                .findByPseudoOrEmail(utilisateur.getPseudo());
         Optional<Utilisateur> existingUtilisateurEmail = utilisateurService.findByPseudoOrEmail(utilisateur.getEmail());
 
         if ((existingUtilisateurPseudo.isPresent()) || (existingUtilisateurEmail.isPresent())) {
@@ -50,7 +50,7 @@ public class RegistrationAndLoginController {
             return "security/registration";
         }
 
-        if(!utilisateur.getMotDePasse().equals(motDePasseConfirmation)) {
+        if (!utilisateur.getMotDePasse().equals(motDePasseConfirmation)) {
             model.addAttribute("passwordMismatch", true);
             return "security/registration";
         }
@@ -60,7 +60,7 @@ public class RegistrationAndLoginController {
             utilisateur.setMotDePasse(new BCryptPasswordEncoder().encode(utilisateur.getMotDePasse()));
             utilisateurService.save(utilisateur);
             return "redirect:/encheres";
-        } else if("cancel".equals(action)) {
+        } else if ("cancel".equals(action)) {
             return "redirect:/encheres";
         }
 
@@ -71,7 +71,6 @@ public class RegistrationAndLoginController {
 
     @GetMapping("/login")
     public String login() {
-
         return "security/login";
     }
 }
