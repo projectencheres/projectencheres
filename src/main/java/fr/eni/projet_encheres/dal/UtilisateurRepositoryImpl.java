@@ -47,20 +47,18 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
         return opt;
     }
 
+    @SuppressWarnings("null")
     @Override
-    public Utilisateur save(Utilisateur u) {
-        // String sql = "INSERT INTO utilisateurs (pseudo, nom, prenom, email,
-        // telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
-        // + "VALUES (:pseudo, :nom, :prenom, :email, :telephone, :rue, :code_postal,
-        // :ville, :mot_de_passe, :credit, :administrateur)";
+    public Utilisateur save(Utilisateur utilisateur) {
+        String sql = "INSERT INTO utilisateurs (pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, administrateur) "
+                + "VALUES (:pseudo, :nom, :prenom, :email, :telephone, :rue, :code_postal, :ville, :mot_de_passe, :credit, :administrateur)";
 
-        String sql = "INSERT INTO utilisateurs (pseudo = ?, nom=?, prenom=?, email=?, telephone=?, rue=?, code_postal=?, ville=?, mot_de_passe=?, credit=?, administrateur=?) ";
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        MapSqlParameterSource parameters = getMapSqlParameterSource(utilisateur);
 
-        jdbcTemplate.update(sql, new UtilisateurRowMapper(), u.getPseudo(), u.getNom(), u.getPrenom(), u.getEmail(),
-                u.getTelephone(), u.getRue(), u.getCodePostal(), u.getVille(), u.getMotDePasse(), u.getCredit(),
-                u.getAdministrateur());
-
-        return u;
+        namedParameterJdbcTemplate.update(sql, parameters, keyHolder, new String[] { "no_utilisateur" });
+        utilisateur.setNoUtilisateur(keyHolder.getKey().intValue());
+        return utilisateur;
     }
 
     @Override
