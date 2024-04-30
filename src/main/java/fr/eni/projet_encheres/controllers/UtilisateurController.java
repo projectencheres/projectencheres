@@ -15,43 +15,42 @@ import fr.eni.projet_encheres.exceptions.UtilisateurNotFound;
 @Controller
 @RequestMapping("/utilisateurs")
 public class UtilisateurController {
-	
+
 	private final UtilisateurService utilisateurService;
 
 	public UtilisateurController(UtilisateurService utilisateurService) {
 		this.utilisateurService = utilisateurService;
 	}
-	
+
 	@GetMapping
 	public String listAllUtilisateurs(Model model) {
 		model.addAttribute("utilisateurs", utilisateurService.findAll());
-		
+
 		return "utilisateurs";
 	}
-	
+
 	@GetMapping("/{id}/voir")
 	public String showUtilisateur(@PathVariable("id") int noUtilisateur, Model model) throws UtilisateurNotFound {
 		Utilisateur utilisateur = utilisateurService.findById(noUtilisateur);
 		model.addAttribute("utilisateur", utilisateur);
-		
+
 		return "showUtilisateur";
 	}
-	
+
 	@PostMapping("/{id}/modifier")
 	public String updateUtilisateur(@ModelAttribute Utilisateur utilisateur) {
 		utilisateurService.save(utilisateur);
 		return "redirect:/utilisateurs";
 	}
-	
-	
+
 	@GetMapping("/{id}/modifier")
 	public String updateUtilisateur(@PathVariable("id") int noUtilisateur, Model model) throws UtilisateurNotFound {
 		Utilisateur utilisateur = utilisateurService.findById(noUtilisateur);
 		model.addAttribute("utilisateur", utilisateur);
-		
+
 		return "updateUtilisateur";
 	}
-	
+
 	@GetMapping("/{id}/supprimer")
 	public String deleteProfil(@PathVariable("id") int idUtilisateur) {
 		utilisateurService.deleteProfil(idUtilisateur);

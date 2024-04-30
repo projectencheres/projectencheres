@@ -15,12 +15,13 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(requests -> requests.requestMatchers("/encheres").permitAll()
                 .requestMatchers("/inscription").permitAll()
                 .requestMatchers("/css/**", "/img/**", "/fonts/**").permitAll()
                 .requestMatchers("/utilisateurs/**").hasAnyRole("user", "admin")
-//                .requestMatchers("/utilisateurs/{id}/voir", "/utilisateurs/{id}/modifier", "/utilisateurs/{id}/supprimer").authenticated()
+                // .requestMatchers("/utilisateurs/{id}/voir", "/utilisateurs/{id}/modifier",
+                // "/utilisateurs/{id}/supprimer").authenticated()
                 .anyRequest().authenticated())
                 .formLogin(form -> form.loginPage("/login").permitAll())
                 .logout(LogoutConfigurer::permitAll);
