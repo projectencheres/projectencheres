@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html th:fragment="layout (title, csspage, content)" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8">
-	<title>[[${title}]]</title>
-	<link rel="stylesheet" th:href="@{/css/output.css}" >
-	<th:block th:insert="${csspage}">
-	</th:block>
-</head>
-<body>
-	<header th:fragment="header" class="flex justify-between items-center font-viet h-header bg-primary">
-		<div id="container-header" class="h-header">
-			<a href="/encheres">
-				<img src="/img/logo.png" alt="" width="150">
-			</a>
-		</div>
-		<nav class="flex gap-2 p-2" >
-			<a href="/inscription" class="btn">S'inscrire</a>
-            <a href="/login" class="btn">Se connecter</a>
-		</nav>
-	</header>
-	
-	<div class="flex justify-center h-full w-full font-viet">
-		<div  class="w-desk">
-			<div th:replace="${content}"></div>
-		</div>
-	</div>
-	
-	<footer th:fragment="pied-de-page" class=" font-viet h-footer bg-primary">
-		<div>&copy; 2024 ENI - Encheres</div>
-		<div><a href="#">Mentions légales</a></div>
-		<div><a href="#">Crédits</a></div>
-	</footer>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[[${title}]]</title>
+        <link rel="stylesheet" th:href="@{/css/output.css}" />
+        <th:block th:insert="${csspage}"> </th:block>
+    </head>
+    <body>
+        <header th:fragment="header" class="flex justify-between items-center font-viet h-header bg-primary">
+            <div id="container-header" class="h-header">
+                <a href="/encheres">
+                    <img src="/img/logo.png" alt="" width="150" />
+                </a>
+            </div>
+            <nav class="flex gap-2 p-2">
+                <a href="/inscription" class="btn">S'inscrire</a>
+                <a href="/login" class="btn">Se connecter</a>
+            </nav>
+        </header>
+
+        <div class="flex justify-center w-full font-viet">
+            <div class="w-desk">
+                <div th:replace="${content}"></div>
+            </div>
+        </div>
+
+        <footer th:fragment="pied-de-page" class="font-viet h-footer bg-primary">
+            <div class="flex h-full justify-center items-center gap-4">
+                <div>&copy; 2024 ENI - Encheres</div>
+                <div><a href="#" class="underline">Mentions légales</a></div>
+                <div><a href="#" class="underline">Crédits</a></div>
+            </div>
+        </footer>
+    </body>
 </html>

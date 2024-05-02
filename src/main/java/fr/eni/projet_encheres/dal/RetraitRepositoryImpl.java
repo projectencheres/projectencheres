@@ -34,7 +34,7 @@ public class RetraitRepositoryImpl implements RetraitRepository {
             Retrait retrait = jdbcTemplate.queryForObject(sql, new RetraitRowMapper(), noRetrait);
             assert retrait != null;
             optionalRetrait = Optional.of(retrait);
-        } catch(EmptyResultDataAccessException exc) {
+        } catch (EmptyResultDataAccessException exc) {
             optionalRetrait = Optional.empty();
         }
 
@@ -42,18 +42,55 @@ public class RetraitRepositoryImpl implements RetraitRepository {
     }
 
     @Override
+    public Optional<Retrait> findByExactField(Retrait _retrait) {
+        String sql = "SELECT * FROM retraits WHERE rue = ? AND code_postal = ? AND ville = ?";
+
+        Optional<Retrait> optionalRetrait;
+
+        try {
+            Retrait retrait = jdbcTemplate.queryForObject(sql, new RetraitRowMapper(), _retrait.getRue(),
+                    _retrait.getCodePostal(), _retrait.getVille());
+            assert retrait != null;
+            optionalRetrait = Optional.of(retrait);
+        } catch (EmptyResultDataAccessException exc) {
+            optionalRetrait = Optional.empty();
+        }
+
+        return optionalRetrait;
+    }
+
+    @Override
+    public Retrait saveOnNotFound(Retrait _retrait) {
+        Optional<Retrait> optRetrait = findByExactField(_retrait);
+
+        if (!optRetrait.isPresent())
+            onlySave(_retrait);
+
+        Optional<Retrait> optRetraitVerified = findByExactField(_retrait);
+        Retrait retrait = optRetraitVerified.get();
+        return retrait;
+    }
+
+    @Override
+    public void onlySave(Retrait retrait) {
+        String sql = "INSERT INTO retraits (rue, code_postal, ville) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, retrait.getRue(), retrait.getCodePostal(), retrait.getVille());
+    }
+
+    @Override
     public void save(Retrait retrait) {
 
         if (retrait.getNoRetrait() == 0) {
             String sql = "INSERT INTO retraits (no_retrait, rue, code_postal, ville) VALUES (?, ?, ?, ?)";
-            jdbcTemplate.update(sql, retrait.getNoRetrait(), retrait.getRue(), retrait.getCodePostal(), retrait.getVille());
+            jdbcTemplate.update(sql, retrait.getNoRetrait(), retrait.getRue(), retrait.getCodePostal(),
+                    retrait.getVille());
 
         } else {
             String sql = "Update retraits SET rue = ?, code_postal = ?, ville = ? WHERE no_retrait = ?";
-            jdbcTemplate.update(sql, retrait.getRue(), retrait.getCodePostal(), retrait.getVille(), retrait.getNoRetrait());
+            jdbcTemplate.update(sql, retrait.getRue(), retrait.getCodePostal(), retrait.getVille(),
+                    retrait.getNoRetrait());
         }
 
     }
-
 
 }

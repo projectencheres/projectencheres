@@ -20,6 +20,7 @@ public class SecurityConfig {
                 .requestMatchers("/inscription").permitAll()
                 .requestMatchers("/css/**", "/img/**", "/fonts/**").permitAll()
                 .requestMatchers("/utilisateurs/**").hasAnyRole("user", "admin")
+                .requestMatchers("/**").permitAll()
                 // .requestMatchers("/utilisateurs/{id}/voir", "/utilisateurs/{id}/modifier",
                 // "/utilisateurs/{id}/supprimer").authenticated()
                 .anyRequest().authenticated())

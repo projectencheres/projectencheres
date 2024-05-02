@@ -15,16 +15,15 @@ public class EnchereRowMapper implements RowMapper<Enchere> {
         Enchere enchere = new Enchere();
 
         enchere.setNoEnchere(rs.getInt("no_enchere"));
-        enchere.setDateEnchere(rs.getDate("date_enchere"));
+        enchere.setDateEnchere(rs.getDate("date_enchere").toLocalDate());
         enchere.setMontantEnchere(rs.getDouble("montant_enchere"));
 
         Article article = new Article(
                 rs.getInt("no_article"),
                 rs.getString("nom_article"),
-                rs.getDate("date_fin_encheres"),
+                rs.getDate("date_fin_encheres").toLocalDate(),
                 rs.getDouble("prix_vente"),
-                rs.getInt("categorie_article")
-        );
+                rs.getInt("categorie_article"));
 
         enchere.setArticle(article);
 
@@ -33,14 +32,14 @@ public class EnchereRowMapper implements RowMapper<Enchere> {
                 // rs.getString("pseudo"),
                 rs.getString("nom"),
                 rs.getString("prenom")
-                // rs.getString("email"),
-                // rs.getString("telephone"),
-                // rs.getString("rue"),
-                // rs.getString("code_postal"),
-                // rs.getString("ville"),
-                // rs.getString("mot_de_passe"),
-                // rs.getDouble("credit"),
-                // rs.getBoolean("administrateur")
+        // rs.getString("email"),
+        // rs.getString("telephone"),
+        // rs.getString("rue"),
+        // rs.getString("code_postal"),
+        // rs.getString("ville"),
+        // rs.getString("mot_de_passe"),
+        // rs.getDouble("credit"),
+        // rs.getBoolean("administrateur")
         );
 
         enchere.setUtilisateur(utilisateur);

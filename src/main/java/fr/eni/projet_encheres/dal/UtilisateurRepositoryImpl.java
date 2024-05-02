@@ -73,7 +73,7 @@ public class UtilisateurRepositoryImpl implements UtilisateurRepository {
     public Optional<Utilisateur> findByPseudoOrEmail(String identifiant) {
 
         String buildIdentifiant = identifiant.toLowerCase();
-        String sql = "SELECT pseudo, email, mot_de_passe, administrateur from utilisateurs WHERE LOWER(pseudo) = ? OR LOWER(email) = ?";
+        String sql = "SELECT * from utilisateurs WHERE LOWER(pseudo) = ? OR LOWER(email) = ?";
 
         List<Utilisateur> utilisateurs = jdbcTemplate.query(
                 sql,
