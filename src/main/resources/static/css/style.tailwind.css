@@ -64,32 +64,37 @@ footer {
 }
 
 .btn {
-  @apply  p-2 bg-secondary shadow-sm
+  @apply  p-2.5 bg-secondary shadow-sm
 }
 
 .btn:hover {
-  @apply  p-2 bg-primary shadow-lg border border-tertiary
-}
-input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 5px;
+  @apply  p-2.5 bg-primary shadow-lg border border-tertiary
 }
 
-input:focus {
+/* ----------- input styling ------------ */
+input, textarea {
+  width: 100%;
+  max-width: 300px;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+input:focus, textarea:focus {
   /* Styles pour l'état focus */
   border-color: blue;
   outline: none;
 }
 
-input[type=text] {
+input[type=text], input[type=number], input[type=email], input[type=tel], input[type=password],textarea {
   @apply border border-tertiary
 }
 
-input[type=text]:focus {
+input[type=text]:focus, input[type=number]:focus, input[type=email]:focus, input[type=tel]:focus, input[type=password]:focus, textarea:focus {
   @apply bg-primary border-transparent
 }
 
-input[type=text]:focus::placeholder {
+input[type=text]:focus::placeholder, input[type=number]:focus::placeholder, input[type=email]:focus::placeholder, input[type=tel]:focus::placeholder, input[type=password]:focus::placeholder, textarea:focus::placeholder {
   @apply text-transparent
 }
+
+
