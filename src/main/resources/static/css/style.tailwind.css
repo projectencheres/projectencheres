@@ -4,7 +4,7 @@
 
 :root {
     --height-header: 80px;
-    --height-footer: 208px;
+    --height-footer: 56px;
     --height-content: calc(100vh - var(--height-header) - var(--height-footer));
     --desk-layout: 70%;
     --mobil-layout: 92%;

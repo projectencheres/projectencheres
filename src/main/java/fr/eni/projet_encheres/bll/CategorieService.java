@@ -7,7 +7,8 @@ import java.util.Optional;
 
 public interface CategorieService {
 
-    List<Categorie> findAllCategories();
+    List<Categorie> findAll();
 
     Optional<Categorie> findById(int id) throws Exception;
+
 }
