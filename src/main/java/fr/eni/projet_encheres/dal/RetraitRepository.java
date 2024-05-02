@@ -11,6 +11,12 @@ public interface RetraitRepository {
 
     Optional<Retrait> findById(int noRetrait);
 
+    Optional<Retrait> findByExactField(Retrait retrait);
+
+    Retrait saveOnNotFound(Retrait _retrait);
+
+    void onlySave(Retrait retrait);
+
     void save(Retrait retrait);
 
 }

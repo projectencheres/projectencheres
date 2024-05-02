@@ -1,53 +1,54 @@
 <!DOCTYPE html>
 <html th:fragment="layout (title, csspage, content)" xmlns:th="http://www.thymeleaf.org">
-<head>
-	<meta charset="UTF-8">
-	<title>[[${title}]]</title>
-	<link rel="stylesheet" th:href="@{/css/output.css}" >
-	<th:block th:insert="${csspage}">
-	</th:block>
-</head>
-<body>
-	<header th:fragment="header" class="flex justify-between items-center font-viet h-header bg-primary">
-		<div id="container-header" class="h-header">
-			<a href="/encheres">
-				<img src="/img/logo.png" alt="" width="150">
-			</a>
-		</div>
-		<nav class="flex gap-2 p-2" >
-			<div sec:authorize="isAnonymous()">
-				<a href="/inscription" class="btn">S'inscrire</a>
-			</div>
-			
-			<div sec:authorize="isAuthenticated()">
-            	<a href="/utilisateurs/mon-profil" class="btn"> Mon profil</a>
+    <head>
+        <meta charset="UTF-8" />
+        <title>[[${title}]]</title>
+        <link rel="stylesheet" th:href="@{/css/output.css}" />
+        <th:block th:insert="${csspage}"> </th:block>
+    </head>
+    <body>
+        <header th:fragment="header" class="flex justify-between items-center font-viet h-header bg-primary">
+            <div id="container-header" class="h-header">
+                <a href="/encheres">
+                    <img src="/img/logo.png" alt="" width="150" />
+                </a>
             </div>
-            
-            <div sec:authorize="isAuthenticated()">
-            	<a href="/utilisateurs" class="btn"> Gestion d'utilisateur</a>
+            <nav class="flex gap-2 p-2" >
+                <div sec:authorize="isAnonymous()">
+                    <a href="/inscription" class="btn">S'inscrire</a>
+                </div>
+                
+                <div sec:authorize="isAuthenticated()">
+                    <a href="/utilisateurs/mon-profil" class="btn"> Mon profil</a>
+                </div>
+                
+                <div sec:authorize="isAuthenticated()">
+                    <a href="/utilisateurs" class="btn"> Gestion d'utilisateur</a>
+                </div>
+                
+                <div sec:authorize="isAnonymous()">
+                    <a href="/login" class="btn">Se connecter</a>
+                </div>
+                
+                <div sec:authorize="isAuthenticated()">
+                    <form th:action="@{/logout}" method = "post" class="btn"><button>Se deconnecter</button></form>
+                </div>
+               
+            </nav>
+        </header>
+
+        <div class="flex justify-center w-full font-viet">
+            <div class="w-desk">
+                <div th:replace="${content}"></div>
             </div>
-			
-			<div sec:authorize="isAnonymous()">
-            	<a href="/login" class="btn">Se connecter</a>
+        </div>
+
+        <footer th:fragment="pied-de-page" class="font-viet h-footer bg-primary">
+            <div class="flex h-full justify-center items-center gap-4">
+                <div>&copy; 2024 ENI - Encheres</div>
+                <div><a href="#" class="underline">Mentions légales</a></div>
+                <div><a href="#" class="underline">Crédits</a></div>
             </div>
-            
-            <div sec:authorize="isAuthenticated()">
-				<form th:action="@{/logout}" method = "post" class="btn"><button>Se deconnecter</button></form>
-            </div>
-           
-		</nav>
-	</header>
-	
-	<div class="flex justify-center h-full w-full font-viet">
-		<div  class="w-desk">
-			<div th:replace="${content}"></div>
-		</div>
-	</div>
-	
-	<footer th:fragment="pied-de-page" class=" font-viet h-footer bg-primary">
-		<div>&copy; 2024 ENI - Encheres</div>
-		<div><a href="#">Mentions légales</a></div>
-		<div><a href="#">Crédits</a></div>
-	</footer>
-</body>
+        </footer>
+    </body>
 </html>
