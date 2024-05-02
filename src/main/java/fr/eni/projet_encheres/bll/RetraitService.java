@@ -10,7 +10,7 @@ public interface RetraitService {
 
     List<Retrait> findAllRetraits();
 
-    Optional<Retrait> findById(int noRetrait) throws RetraitNotFoundException;
+    Retrait findById(int noRetrait) throws RetraitNotFoundException;
 
     void save(Retrait retrait);
 

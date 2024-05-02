@@ -41,16 +41,21 @@ public class ArticleRepositoryImpl implements ArticleRepository {
 
     @Override
     public void save(Article article) {
+        System.out.println(article);
         String sql = "INSERT INTO articles (no_article, nom_article, description, date_debut_encheres, date_fin_encheres, mise_a_prix, prix_vente, etat_vente, categorie_article, lieu_retrait) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, article.getNoArticle(), article.getNomArticle(), article.getDescription(), article.getDateDebutEncheres(),
-            article.getDateFinEncheres(), article.getMiseAPrix(), article.getPrixVente(), article.getEtatVente(), article.getCategorieArticle(), article.getLieuRetrait());
+        jdbcTemplate.update(sql, article.getNoArticle(), article.getNomArticle(), article.getDescription(),
+                article.getDateDebutEncheres(),
+                article.getDateFinEncheres(), article.getMiseAPrix(), article.getPrixVente(), article.getEtatVente(),
+                article.getCategorieArticle(), article.getRetrait().getNoRetrait());
     }
 
     @Override
     public void update(Article article) {
         String sql = "UPDATE articles SET nom_article = ?, description = ?, date_debut_encheres = ?, date_fin_encheres = ?, mise_a_prix = ?, prix_vente = ?, etat_vente = ?, categorie_article = ?, lieu_retrait = ? WHERE no_article = ?";
-        jdbcTemplate.update(sql, article.getNomArticle(), article.getDescription(), article.getDateDebutEncheres(), article.getDateFinEncheres(),
-            article.getMiseAPrix(), article.getPrixVente(), article.getEtatVente(), article.getCategorieArticle(), article.getLieuRetrait(), article.getNoArticle());
+        jdbcTemplate.update(sql, article.getNomArticle(), article.getDescription(), article.getDateDebutEncheres(),
+                article.getDateFinEncheres(),
+                article.getMiseAPrix(), article.getPrixVente(), article.getEtatVente(), article.getCategorieArticle(),
+                article.getRetrait(), article.getNoArticle());
     }
 
     @Override

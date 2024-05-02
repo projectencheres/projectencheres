@@ -11,15 +11,15 @@
 
     <body>
         <div id="content-wrapper" class="flex flex-col justify-center items-center gap-8 mt-4 mb-8">
-            <form action="#" method="post">
+            <form th:action="@{/ajoutArticle}" th:object="${article}" method="post">
                 <fieldset
                     class="flex flex-col gap-4 max-w-[600px] [&>div]:flex [&>div]:flex-row [&>div]:justify-between [&>div>label]:w-52"
                 >
                     <legend class="text-h2 w-full text-center mb-8">Nouvelle vente</legend>
 
                     <div class="items-center">
-                        <label for="article">Article:</label>
-                        <input type="text" id="article" name="article" />
+                        <label for="nomArticle">Article:</label>
+                        <input type="text" id="nomArticle" th:field="*{nomArticle}" />
                     </div>
 
                     <div>
@@ -27,14 +27,13 @@
                         <textarea id="description" name="description"></textarea>
                     </div>
 
-                    <div class="items-center">
+                    <div class="items-center" id="categorie">
                         <label for="categorie">Catégorie:</label>
-                        <select name="categorie" class="border rounded">
-                            <option value="0"></option>
-                            <option value="1">Informatique</option>
-                            <option value="2">Ameublement</option>
-                            <option value="3">Vêtements</option>
-                            <option value="4">Sport&Loisirs</option>
+                        <select name="categorie" class="border rounded" th:field="*{categorieArticle}">
+                            <option value="0">Choisir un categorie...</option>
+                            <option th:each="categorie : ${categorieList}" 
+                            th:value="${categorie.noCategorie}" 
+                            th:text="${categorie.libelle}">Type de genre</option>
                         </select>
                     </div>
 
@@ -43,40 +42,40 @@
                         <input type="file" id="photo" name="photo" />
                     </div>
 
-                    <div class="items-center">
+                    <div class="items-center" >
                         <label for="miseAPrix">Mise à prix:</label>
-                        <input type="number" id="miseAPrix" name="miseAPrix" />
+                        <input type="number" id="miseAPrix" th:field="*{miseAPrix}" />
                     </div>
 
                     <div class="items-center">
                         <label for="debutEnchere">Début de l'enchère:</label>
-                        <input type="date" id="debutEnchere" name="debutEnchere" />
+                        <input type="date" id="debutEnchere" name="debutEnchere" th:field="*{dateDebutEncheres}" />
                     </div>
 
                     <div class="items-center">
                         <label for="finEnchere">Fin de l'enchère:</label>
-                        <input type="date" id="finEnchere" name="finEnchere" />
+                        <input type="date" id="finEnchere" name="finEnchere" th:field="*{dateFinEncheres}"/>
                     </div>
-
-                    <fieldset class="border border-black relative p-4">
+                    
+                    <fieldset class="border border-black relative p-4" >
                         <legend class="bg-white absolute top-0 left-0 -translate-y-1/2 translate-x-1/2 px-1">
                             Retrait
                         </legend>
-
+                        
                         <div class="flex flex-col gap-4 max-w-[600px] [&>div]:flex [&>div]:flex-row [&>div]:justify-between [&>div]:items-center [&>div>label]:w-52">
                             <div>
                                 <label for="rue">Rue:</label>
-                                <input type="text" id="rue" name="rue" />
+                                <input type="text" id="rue" name="retrait.rue" th:field="*{retrait.rue}"/>
                             </div>
 
                             <div>
                                 <label for="codePostal">Code postal:</label>
-                                <input type="text" id="codePostal" name="codePostal" />
+                                <input type="text" id="codePostal" name="retrait.codePostal" th:field="*{retrait.codePostal}"/>
                             </div>
 
                             <div>
                                 <label for="ville">Ville:</label>
-                                <input type="text" id="ville" name="ville" />
+                                <input type="text" id="ville" name="retrait.ville" th:field="*{retrait.ville}"/>
                             </div>
                         </div>
                     </fieldset>
