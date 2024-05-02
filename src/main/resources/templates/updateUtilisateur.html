@@ -9,7 +9,7 @@
 <body >
 <div id="content-wrapper">
 	 <h1>Modifier l'Utilisateur</h1>
-    <form action="/utilisateurs/modifier" method="post" th:object="${utilisateur}">
+    <form th:action="@{/utilisateurs/modifier}" method="post" th:object="${utilisateur}">
         <input type="hidden" th:field="*{noUtilisateur}"/>
         <label for="pseudo">Pseudo:</label>
         <input type="text" id="pseudo" th:field="*{pseudo}"/><br/>

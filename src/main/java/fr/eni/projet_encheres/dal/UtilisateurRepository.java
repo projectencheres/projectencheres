@@ -13,5 +13,6 @@ public interface UtilisateurRepository {
     void update(Utilisateur Utilisateur);
     Optional<Utilisateur> findByPseudoOrEmail(String emailOrPseudo);
     void deleteById(int id);
+    Utilisateur findByPseudo(String pseudo);
 
 }

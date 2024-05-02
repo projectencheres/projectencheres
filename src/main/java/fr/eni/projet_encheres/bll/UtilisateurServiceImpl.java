@@ -53,4 +53,9 @@ public class UtilisateurServiceImpl implements UtilisateurService {
     public void save(Utilisateur utilisateur) {
         utilisateurRepository.save(utilisateur);
     }
+    
+    
+    public Utilisateur findByPseudo(String pseudo) {
+    	return utilisateurRepository.findByPseudo(pseudo);
+    }
 }

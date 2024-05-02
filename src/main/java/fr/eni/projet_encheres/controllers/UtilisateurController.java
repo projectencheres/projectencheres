@@ -1,5 +1,11 @@
 package fr.eni.projet_encheres.controllers;
 
+
+import java.security.Principal;
+import java.util.Optional;
+
+import org.springframework.boot.context.properties.bind.BindResult;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,11 +15,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+
 import fr.eni.projet_encheres.bll.UtilisateurService;
 import fr.eni.projet_encheres.bo.Utilisateur;
 import fr.eni.projet_encheres.exceptions.UtilisateurNotFound;
 
 @Controller
+@SessionAttributes({"userConnected"})
 @RequestMapping("/utilisateurs")
 public class UtilisateurController {
 
@@ -57,10 +68,30 @@ public class UtilisateurController {
 
 		return "updateUtilisateur";
 	}
-
+	
+	
 	@GetMapping("/{id}/supprimer")
 	public String deleteProfil(@PathVariable("id") int idUtilisateur) {
 		utilisateurService.deleteProfil(idUtilisateur);
 		return "redirect:/utilisateurs";
+	}
+	
+	@GetMapping("/mon-profil")
+	public String afficherProfilUtilisateur( @ModelAttribute("userConnected") Utilisateur utilisateurConnected, Model model) {
+	        
+//		model.addAttribute("utilisateur", utilisateurConnected);
+	        
+	    return "monProfil";
+	}
+	
+	@PostMapping("/mon-profil")
+	public String updateProfil(@ModelAttribute("userConnected") Utilisateur utilisateurConnected, BindingResult resultat) {
+		if (resultat.hasErrors()) {
+            return "utilisateurs/mon-profil";
+        }
+		
+		utilisateurService.updateProfil(utilisateurConnected);
+		
+		return "redirect:/encheres";
 	}
 }

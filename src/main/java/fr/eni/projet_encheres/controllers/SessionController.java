@@ -8,11 +8,16 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 
+import java.security.Principal;
 import java.util.Optional;
 
 @Controller
+@SessionAttributes({"userConnected"})
+
 public class SessionController {
 
     private final UtilisateurService utilisateurService;
@@ -72,5 +77,44 @@ public class SessionController {
     @GetMapping("/login")
     public String login() {
         return "security/login";
+    }
+    
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request) {
+    	HttpSession session = request.getSession(false);
+    	if (session != null) {
+    		session.invalidate();
+    		
+    	}
+    	return "redirect:/encheres";
+    }
+    
+    @GetMapping("/connected")
+    public String succeslogin(@ModelAttribute("userConnected") Utilisateur utilisateurConnected, Principal principal) {
+    	String login = principal.getName();
+    	
+    	Optional<Utilisateur> utilisateurOptional = utilisateurService.findByPseudoOrEmail(login);
+    	
+    	if(utilisateurOptional.isPresent()) {
+    		utilisateurConnected.setNoUtilisateur(utilisateurOptional.get().getNoUtilisateur());
+    		utilisateurConnected.setPseudo(utilisateurOptional.get().getPseudo());
+    		utilisateurConnected.setNom(utilisateurOptional.get().getNom());
+    		utilisateurConnected.setPrenom(utilisateurOptional.get().getPrenom());
+    		utilisateurConnected.setEmail(utilisateurOptional.get().getEmail());
+    		utilisateurConnected.setTelephone(utilisateurOptional.get().getTelephone());
+    		utilisateurConnected.setRue(utilisateurOptional.get().getRue());
+    		utilisateurConnected.setCodePostal(utilisateurOptional.get().getCodePostal());
+    		utilisateurConnected.setVille(utilisateurOptional.get().getVille());
+    		utilisateurConnected.setMotDePasse(utilisateurOptional.get().getMotDePasse());
+       	}
+    	
+    	return "redirect:/encheres";
+    }
+    
+    
+    @ModelAttribute("userConnected")
+    public Utilisateur addUtilisateurSession() {
+    	
+    	return new Utilisateur();
     }
 }
