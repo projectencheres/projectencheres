@@ -22,6 +22,10 @@
 			<div sec:authorize="isAuthenticated()">
             	<a href="/utilisateurs/mon-profil" class="btn"> Mon profil</a>
             </div>
+            
+            <div sec:authorize="isAuthenticated()">
+            	<a href="/utilisateurs" class="btn"> Gestion d'utilisateur</a>
+            </div>
 			
 			<div sec:authorize="isAnonymous()">
             	<a href="/login" class="btn">Se connecter</a>

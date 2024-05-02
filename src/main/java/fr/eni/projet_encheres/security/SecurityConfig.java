@@ -22,6 +22,7 @@ public class SecurityConfig {
                 .requestMatchers("/inscription").permitAll()
                 .requestMatchers("/css/**", "/img/**", "/fonts/**").permitAll()
                 .requestMatchers("/utilisateurs/**").hasAnyRole("user", "admin")
+                .requestMatchers("utilisateurs/mon-profil", "utilisateurs/modifier").hasAnyRole("user", "admin")
 //                .requestMatchers("/utilisateurs/{id}/voir", "/utilisateurs/{id}/modifier", "/utilisateurs/{id}/supprimer").authenticated()
                 .anyRequest().authenticated())
                 .formLogin(form -> form.loginPage("/login").defaultSuccessUrl("/connected").permitAll())

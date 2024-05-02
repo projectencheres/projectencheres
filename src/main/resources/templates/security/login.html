@@ -1,28 +1,48 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html th:replace="~{modele-page :: layout('login page',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Login</title>
+    <link rel="stylesheet" href="css/output.css">
 </head>
 <body>
 
 <br>
-
-<h2>Se Connecter :</h2>
-<br>
-
-<form th:action="@{/login}" method="post">
-    <div><label>Identifiant: <input type="text" name="username"/></label></div>
-    <div><label>Mot de Passe: <input type="password" name="password"/> </label></div>
-    <div>
-        <button type="submit">Connexion</button>
+<div id="content-wrapper" class="taiwild-card taiwild-card-primary taiwild-card-rounded taiwild-card-small taiwild-card-shadow">
+    <h2 class="taiwild-text-center">Se Connecter :</h2>
+    <br>
+    
+    <form th:action="@{/login}" method="post">
+        <div class="taiwild-form-group">
+            <label class="taiwild-form-label">Identifiant: </label>
+            <input type="text" name="username" class="taiwild-form-control"/>
+        </div>
+        <div class="taiwild-form-group">
+            <label class="taiwild-form-label">Mot de Passe: </label>
+            <input type="password" name="password" class="taiwild-form-control"/>
+        </div>
+        <div class="taiwild-form-group">
+            <label class="taiwild-form-check-label">
+                <input type="checkbox" name="rememberMe" class="taiwild-form-check-input"/> Se souvenir de moi
+            </label>
+        </div>
+        <div class="taiwild-form-group">
+            <a href="/forgot-password" class="taiwild-text-primary">Mot de passe oublié ?</a>
+        </div>
+        <div class="taiwild-form-group">
+            <button type="submit" class="taiwild-btn taiwild-btn-primary">Connexion</button>
+        </div>
+    </form>
+    
+    <div th:if="${param.error}" class="taiwild-text-danger">
+        Pseudo/email ou password incorrect
     </div>
-</form>
-
-<div th:if="${param.error}">
-    Pseudo/email ou password incorrect
-</div>
-<div th:if="${param.logout}">
-    Vous avez été déconnecté
+    <div th:if="${param.logout}" class="taiwild-text-success">
+        Vous avez été déconnecté
+    </div>
+    
+    <div class="taiwild-text-center">
+        <a href="/inscription" class="taiwild-text-primary">S'inscrire</a>
+    </div>
 </div>
 </body>
 </html>

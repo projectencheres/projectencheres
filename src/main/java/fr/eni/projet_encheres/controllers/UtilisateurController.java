@@ -68,7 +68,6 @@ public class UtilisateurController {
 		return "updateUtilisateur";
 	}
 	
-
 	
 	@GetMapping("/{id}/supprimer")
 	public String deleteProfil(@PathVariable("id") int idUtilisateur) {
@@ -79,8 +78,19 @@ public class UtilisateurController {
 	@GetMapping("/mon-profil")
 	public String afficherProfilUtilisateur( @ModelAttribute("userConnected") Utilisateur utilisateurConnected, Model model) {
 	        
-		model.addAttribute("utilisateur", utilisateurConnected);
+//		model.addAttribute("utilisateur", utilisateurConnected);
 	        
 	    return "monProfil";
+	}
+	
+	@PostMapping("/mon-profil")
+	public String updateProfil(@ModelAttribute("userConnected") Utilisateur utilisateurConnected, BindingResult resultat) {
+		if (resultat.hasErrors()) {
+            return "utilisateurs/mon-profil";
+        }
+		
+		utilisateurService.updateProfil(utilisateurConnected);
+		
+		return "redirect:/encheres";
 	}
 }
