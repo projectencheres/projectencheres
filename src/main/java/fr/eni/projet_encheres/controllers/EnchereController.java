@@ -1,9 +1,7 @@
 package fr.eni.projet_encheres.controllers;
 
 import fr.eni.projet_encheres.bll.EnchereService;
-import fr.eni.projet_encheres.bo.Enchere;
 
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.security.core.Authentication;
@@ -18,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class EnchereController {
 
-    private EnchereService enchereService;
+    private final EnchereService enchereService;
 
     public EnchereController(EnchereService enchereService) {
         this.enchereService = enchereService;
@@ -80,7 +78,17 @@ public class EnchereController {
             model.addAttribute("encherePossible", false);
             model.addAttribute("errorMessage", "Unable to retrieve item details. Please try again later.");
         }
+
         return "produits/encherir_produit";
+    }
+
+    @PostMapping("/submitEnchere")
+    public String submitEnchere(
+            Model model
+    ) {
+        boolean enchereGagne = true;
+        model.addAttribute("enchereGagne", enchereGagne);
+        return "produits/submit_enchere";
     }
 
 }
