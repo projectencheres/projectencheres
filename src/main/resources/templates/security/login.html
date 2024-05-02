@@ -1,48 +1,48 @@
 <!DOCTYPE html>
 <html th:replace="~{modele-page :: layout('login page',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Login</title>
-    <link rel="stylesheet" href="css/output.css">
-</head>
-<body>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" th:href="@{/css/output.css}" />
+    </head>
+    <body>
+        <div id="content-wrapper">
+            <div class="flex flex-col gap-8 pt-28">
+                <form th:action="@{/login}" method="post">
+                    <div class="flex flex-col gap-4 w-full [&>div>div>label]:inline-block [&>div>div>label]:w-52 p-4">
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <label for="aze">Identifiant: </label>
+                                <input type="text" name="username" class="" />
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <label>Mot de Passe: </label>
+                                <input type="password" name="password" class="" />
+                            </div>
+                        </div>
+                        <div class="flex w-full gap-4">
+                            <div class="shadow-xl">
+                                <input type="submit" class="btn rounded-none w-56 h-20" value="Connexion" />
+                            </div>
+                            <div class="flex flex-col gap-4 w-full px-8 py-2">
+                                <div class="flex gap-2 h-5 w-full">
+                                    <input type="checkbox" name="rememberMe" id="rememberMe" class="h-full w-4" />
+                                    <label class="inline-block" role="button" for="rememberMe">Se souvenir de moi </label>
+                                </div>
+                                <a href="/forgot-password" class="text-blue-800 underline">Mot de passe oublié ?</a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
 
-<br>
-<div id="content-wrapper" class="taiwild-card taiwild-card-primary taiwild-card-rounded taiwild-card-small taiwild-card-shadow">
-    <h2 class="taiwild-text-center">Se Connecter :</h2>
-    <br>
-    
-    <form th:action="@{/login}" method="post">
-        <div class="taiwild-form-group">
-            <label class="taiwild-form-label">Identifiant: </label>
-            <input type="text" name="username" class="taiwild-form-control"/>
+                <div th:if="${param.error}" class="text-red-500">Pseudo/email ou password incorrect</div>
+                <div th:if="${param.logout}" class="text-green-500">Vous avez été déconnecté</div>
+
+                <div class="flex h-28 w-full p-4">
+                    <a href="/inscription" class="btn text-center content-center h-full w-full shadow-xl">S'inscrire</a>
+                </div>
+            </div>
         </div>
-        <div class="taiwild-form-group">
-            <label class="taiwild-form-label">Mot de Passe: </label>
-            <input type="password" name="password" class="taiwild-form-control"/>
-        </div>
-        <div class="taiwild-form-group">
-            <label class="taiwild-form-check-label">
-                <input type="checkbox" name="rememberMe" class="taiwild-form-check-input"/> Se souvenir de moi
-            </label>
-        </div>
-        <div class="taiwild-form-group">
-            <a href="/forgot-password" class="taiwild-text-primary">Mot de passe oublié ?</a>
-        </div>
-        <div class="taiwild-form-group">
-            <button type="submit" class="taiwild-btn taiwild-btn-primary">Connexion</button>
-        </div>
-    </form>
-    
-    <div th:if="${param.error}" class="taiwild-text-danger">
-        Pseudo/email ou password incorrect
-    </div>
-    <div th:if="${param.logout}" class="taiwild-text-success">
-        Vous avez été déconnecté
-    </div>
-    
-    <div class="taiwild-text-center">
-        <a href="/inscription" class="taiwild-text-primary">S'inscrire</a>
-    </div>
-</div>
-</body>
+    </body>
 </html>

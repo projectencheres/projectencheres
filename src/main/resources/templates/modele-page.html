@@ -13,7 +13,7 @@
                     <img src="/img/logo.png" alt="" width="150" />
                 </a>
             </div>
-            <nav class="flex gap-2 p-2" >
+            <nav class="flex justify-center gap-2 p-2" >
                 <div sec:authorize="isAnonymous()">
                     <a href="/inscription" class="btn">S'inscrire</a>
                 </div>
@@ -31,7 +31,7 @@
                 </div>
                 
                 <div sec:authorize="isAuthenticated()">
-                    <form th:action="@{/logout}" method = "post" class="btn"><button>Se deconnecter</button></form>
+                    <a href="/logout" class="btn">Se deconnecter</a>
                 </div>
                
             </nav>

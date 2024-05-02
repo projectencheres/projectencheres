@@ -1,42 +1,40 @@
 <!DOCTYPE html>
 <html th:replace="~{modele-page :: layout('Liste des utilisateurs',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Liste des Utilisateurs</title>
-    <link rel="stylesheet" href="css/output.css" >
-    
-</head>
-<body class="bg-gray-100">
-    <div id="content-wrapper" class="container mx-auto py-8">
-        <h1 class="text-2xl font-bold mb-8">Liste des Utilisateurs</h1>
-        <table class="table-auto w-full">
-        <thead>
-                <tr>
-                    <th class="px-4 py-2">No</th>
-                    <th class="px-4 py-2">Nom</th>
-                    <th class="px-4 py-2">Prénom</th>
-                    <th class="px-4 py-2">Email</th>
-                    <th class="px-4 py-2">Téléphone</th>
-                    <th class="px-4 py-2">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr th:each="utilisateur : ${utilisateurs}" class="border-b border-gray-200">
-                    <td class="px-4 py-2" th:text="${utilisateur.noUtilisateur}"></td>
-                    <td class="px-4 py-2" th:text="${utilisateur.nom}"></td>
-                    <td class="px-4 py-2" th:text="${utilisateur.prenom}"></td>
-                    <td class="px-4 py-2" th:text="${utilisateur.email}"></td>
-                    <td class="px-4 py-2" th:text="${utilisateur.telephone}"></td>
-                    <td class="px-4 py-2">
-                    <!-- Boutons pour les actions Modifier, Supprimer et Voir -->
-					<a class="text-blue-500 mr-2" th:href="@{/utilisateurs/{id}/modifier(id=${utilisateur.noUtilisateur})}">Modifier</a>
-                    <a class="text-green-500 mr-2" th:href="@{/utilisateurs/{idUtilisateur}/voir(idUtilisateur=${utilisateur.noUtilisateur})}">Voir</a>
-                    <a class="text-red-500" th:href="@{/utilisateurs/{idUtilisateur}/supprimer(idUtilisateur=${utilisateur.noUtilisateur})}">Supprimer</a>
-                </td>
-               
-            </tr>
-        </tbody>
-    </table>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Liste des Utilisateurs</title>
+        <link rel="stylesheet" href="css/output.css" />
+    </head>
+    <body class="bg-gray-100">
+        <div id="content-wrapper" class="container mx-auto py-8">
+            <h1 class="text-2xl font-bold mb-8">Liste des Utilisateurs</h1>
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2">No</th>
+                        <th class="px-4 py-2">Nom</th>
+                        <th class="px-4 py-2">Prénom</th>
+                        <th class="px-4 py-2">Email</th>
+                        <th class="px-4 py-2">Téléphone</th>
+                        <th class="px-4 py-2">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="utilisateur : ${utilisateurs}" class="border-b border-gray-200">
+                        <td class="px-4 py-2" th:text="${utilisateur.noUtilisateur}"></td>
+                        <td class="px-4 py-2" th:text="${utilisateur.nom}"></td>
+                        <td class="px-4 py-2" th:text="${utilisateur.prenom}"></td>
+                        <td class="px-4 py-2" th:text="${utilisateur.email}"></td>
+                        <td class="px-4 py-2" th:text="${utilisateur.telephone}"></td>
+                        <td class="px-4 py-2">
+                            <!-- Boutons pour les actions Modifier, Supprimer et Voir -->
+                            <a class="text-blue-500 mr-2" th:href="@{/utilisateurs/{id}/modifier(id=${utilisateur.noUtilisateur})}">Modifier</a>
+                            <a class="text-green-500 mr-2" th:href="@{/utilisateurs/{idUtilisateur}/voir(idUtilisateur=${utilisateur.noUtilisateur})}">Voir</a>
+                            <a class="text-red-500" th:href="@{/utilisateurs/{idUtilisateur}/supprimer(idUtilisateur=${utilisateur.noUtilisateur})}">Supprimer</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
 </html>
