@@ -7,6 +7,7 @@ import fr.eni.projet_encheres.dal.override;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EnchereServiceImpl implements EnchereService{
@@ -33,5 +34,10 @@ public class EnchereServiceImpl implements EnchereService{
     @Override
     public List<Enchere> findByNameAndCategorie(String _name, int noCategorie) {
         return enchereRepository.findByNameAndCategorie(_name, noCategorie);
+    }
+
+    @Override
+    public Map<String, Object> customFindById(int noEnchere, String sessionUserIdentifiant) {
+        return enchereRepository.customFindById(noEnchere, sessionUserIdentifiant);
     }
 }

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html th:replace="~{modele-page :: layout('Detail Vente',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Vente</title>
+    <link rel="stylesheet" th:href="@{/css/output.css}" >
+</head>
+
+<body>
+<div id="content-wrapper" class="flex flex-col justify-start items-start gap-4 mt-4 mb-8">
+    <h4>Detail Vente</h4>
+    <br>
+
+    <div class="items-center">
+        <h3 th:text="${enchereMap['nom_article']}"></h3>
+    </div>
+
+    <div class="items-center">
+        <label>Description: </label>
+        <p th:text="${enchereMap['description']}"></p>
+    </div>
+
+    <div class="items-center">
+        <label>Categorie: </label>
+        <p th:text="${enchereMap['libelle']}"></p>
+    </div>
+
+    <div class="items-center">
+        <label>Meilleure Offre: </label>
+        <p th:text="${enchereMap['montant_enchere']} + ' pts par Bob'"></p>
+    </div>
+
+    <div class="items-center">
+        <label>Mise a prix: </label>
+        <p th:text="${enchereMap['mise_a_prix']} + ' points'"></p>
+    </div>
+
+    <div class="items-center">
+        <label>Fin de l'enchere: </label>
+        <p th:text="${#dates.format(enchereMap['date_fin_encheres'], 'dd/MM/yyyy')}"></p>
+    </div>
+
+    <div class="items-center">
+        <label>Retrait: </label>
+        <p th:text="${enchereMap['rue']} + ' ' + ${enchereMap['code_postal']} + ' ' + ${enchereMap['ville']}"></p>
+    </div>
+
+    <div class="items-center">
+        <label>Vendeur: </label>
+        <p th:text="${enchereMap['pseudo']}"></p>
+    </div>
+
+    <form th:if="${encherePossible}" method="post">
+        <div class="items-center">
+            <label for="montantEnchere">Ma proposition: </label>
+            <input type="number" id="montantEnchere" th:min="${enchereMap['mise_a_prix']}" th:max="${maProposition}">
+            <br>
+            <button type="submit">Encherir</button>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
