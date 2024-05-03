@@ -8,6 +8,7 @@
 
 <body>
 <div id="content-wrapper" class="flex flex-col justify-start items-start gap-4 mt-4 mb-8">
+
     <h4>Detail Vente</h4>
     <br>
 
@@ -54,7 +55,7 @@
         <input type="hidden" name="no_enchere" th:value="${enchereMap['no_enchere']}">
         <div class="items-center">
             <label>Ma proposition: </label>
-            <input type="number" th:min="${enchereMap['mise_a_prix']}" th:max="${maProposition}">
+            <input type="number" th:min="${enchereMap['montant_enchere']} + 1" th:max="${maProposition}">
             <br>
             <button type="submit">Encherir</button>
         </div>
