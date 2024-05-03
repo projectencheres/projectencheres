@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html th:replace="~{modele-page :: layout('Remporter Vente',~{::link} , ~{::#content-wrapper})}" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Remporter Vente</title>
+    <link rel="stylesheet" th:href="@{/css/output.css}" >
 </head>
+
 <body>
 
-<div th:if="${enchereGagne}">
-    <h3>Vous avez remporte la vente</h3>
-</div>
+<div id="content-wrapper" class="flex flex-col justify-start items-start gap-4 mt-4 mb-8">
 
+    <div th:if="${enchereGagne}">
+        <h3>Vous avez remporte la vente</h3>
+    </div>
+</div>
 
 </body>
 </html>
