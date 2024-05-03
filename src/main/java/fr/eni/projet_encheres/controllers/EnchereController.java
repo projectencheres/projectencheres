@@ -1,24 +1,21 @@
 package fr.eni.projet_encheres.controllers;
 
 import fr.eni.projet_encheres.bll.EnchereService;
-import fr.eni.projet_encheres.bo.Enchere;
 
-import java.util.List;
 import java.util.Map;
 
+import fr.eni.projet_encheres.bo.Enchere;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class EnchereController {
 
-    private EnchereService enchereService;
+    private final EnchereService enchereService;
 
     public EnchereController(EnchereService enchereService) {
         this.enchereService = enchereService;
@@ -53,19 +50,17 @@ public class EnchereController {
 
         Map<String, Object> enchereMap = enchereService.customFindById(noEnchere, currentPrincipalName);
         model.addAttribute("enchereMap", enchereMap);
-        System.out.println(enchereMap);
-
         if (enchereMap != null) {
-            Object miseAPrixObj = enchereMap.get("mise_a_prix");
+            Object montantEnchereObj = enchereMap.get("montant_enchere");
             Object sessionUserCreditObj = enchereMap.get("session_user_credit");
 
             // convert from object back to double
 
-            if ((miseAPrixObj instanceof Double) && (sessionUserCreditObj instanceof Double)) {
-                double miseAPrix = ((Number) miseAPrixObj).doubleValue();
+            if ((montantEnchereObj instanceof Double) && (sessionUserCreditObj instanceof Double)) {
+                double montantEnchere = ((Number) montantEnchereObj).doubleValue();
                 double sessionUserCredit = ((Number) sessionUserCreditObj).doubleValue();
 
-                if (sessionUserCredit >= miseAPrix) {
+                if (sessionUserCredit >= montantEnchere) {
                     model.addAttribute("encherePossible", true);
                     model.addAttribute("maProposition", sessionUserCredit);
                 } else {
@@ -80,7 +75,17 @@ public class EnchereController {
             model.addAttribute("encherePossible", false);
             model.addAttribute("errorMessage", "Unable to retrieve item details. Please try again later.");
         }
+
         return "produits/encherir_produit";
     }
 
+    @PostMapping("/submitEnchere")
+    public String submitEnchere(
+            Model model
+    ) {
+
+        boolean enchereGagne = true;
+        model.addAttribute("enchereGagne", enchereGagne);
+        return "produits/submit_enchere";
+    }
 }
