@@ -6,13 +6,6 @@
         <link rel="stylesheet" th:href="@{/css/output.css}" />
     </head>
 
-<<<<<<< Updated upstream
-<body>
-<div id="content-wrapper" class="flex flex-col justify-start items-start gap-4 mt-4 mb-8">
-
-    <h4>Detail Vente</h4>
-    <br>
-=======
     <body>
         <div id="content-wrapper" class="flex flex-col justify-start items-start gap-4 mt-4 mb-8">
             <div class="flex justify-center w-full">
@@ -22,7 +15,6 @@
                         <div>
                             <label class="text-h3" th:text="${enchereMap['nom_article']}"></label>
                         </div>
->>>>>>> Stashed changes
 
                         <div class="flex flex-row justify-between">
                             <label class="w-52 text-h4">Description: </label>
@@ -62,8 +54,8 @@
                                 <p th:text="${enchereMap['pseudo']}"></p>
                             </div>
                         </div>
-                        <form th:if="${encherePossible}" method="post" class="flex justify-center w-full">
-                            <input type="hidden" name="no_enchere" th:value="${enchereMap['no_enchere']}">
+                        <form th:if="${encherePossible}" th:action="@{/submitEnchere}" method="post" class="flex justify-center w-full">
+                            <input type="hidden" name="no_enchere" th:value="${enchereMap['no_enchere']}" />
                             <div class="flex justify-around items-center gap-4 w-5/6">
                                 <label class="flex-grow text-h4" for="montantEnchere">Ma proposition: </label>
                                 <input class="flex-grow-0 w-28" type="number" id="montantEnchere" th:min="${enchereMap['montant_enchere']} + 1" th:max="${maProposition}" />
