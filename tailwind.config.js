@@ -28,7 +28,7 @@ module.exports = {
         'h1-landing': ['32px', { lineHeight: '38' }],
         h2: ['31px', { lineHeight: '41px' }],
         h3: ['20px', { lineHeight: '24px' }],
-        h4: ['14px', { lineHeight: '24px' }],
+        h4: ['16px', { lineHeight: '24px' }],
         'h4-link': ['14px', { lineHeight: '22px' }],
         paragraph: ['13px', { lineHeight: '22px' }],
         'p-small': ['10px', { lineHeight: 'auto' }]
